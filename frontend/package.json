@@ -17,8 +17,8 @@
   "proxy": "http://localhost:8000",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "BUILD_PATH='../public' react-scripts build",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -35,6 +35,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": "16.19.0"
   },
   "devDependencies": {
     "redux-logger": "^3.0.6"

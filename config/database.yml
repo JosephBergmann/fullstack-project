@@ -81,6 +81,10 @@ test:
 #
 production:
   <<: *default
-  database: snack_overflow_production
-  username: snack_overflow
-  password: <%= ENV["SNACK_OVERFLOW_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # <<: *default
+  # database: snack_overflow_production
+  # username: snack_overflow
+  # password: <%= ENV["SNACK_OVERFLOW_DATABASE_PASSWORD"] %>
+
+  
