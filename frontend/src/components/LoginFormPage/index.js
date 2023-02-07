@@ -15,7 +15,19 @@ const IndexFormPage = () => {
     const handleClick = (e) => {
         e.preventDefault();
         setErrors([]);
+        
+        return dispatch(sessionActions.login({email, password})).catch(async (res) => {
+            let data;
+            try {
+                data = await res.clone().json();
+            } catch {
+                data = await res.clone().text();
+            }
 
+            if(data?.errors) setErrors(data.errors);
+            else if (data) setErrors([data]);
+            else setErrors([res.statustext]);
+        })
     }
     return (
         <form onSubmit={handleSubmit}>
