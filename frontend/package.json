@@ -18,7 +18,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "BUILD_PATH='../public' react-scripts build",
-    "build": "npm install --prefix frontend && npm run build --prefix frontend",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
