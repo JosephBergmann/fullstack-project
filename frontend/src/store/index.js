@@ -19,7 +19,6 @@ const rootReducer = () => combineReducers({
 // }
 
 const configureStore = (preloadedState = {}) => {
-    debugger
     return createStore(rootReducer, preloadedState, applyMiddleware(thunk, logger));
 }
 export default configureStore;

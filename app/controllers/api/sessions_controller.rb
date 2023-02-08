@@ -25,10 +25,6 @@ class Api::SessionsController < ApplicationController
 
     def destroy
         logout
-        debugger
-        # head :no_content 
-        # populate http response with no content => no body
-        # render json: {test: ['Logged out successfully']}, status: :ok
         render json: { message: 'success' }
     end
 end
