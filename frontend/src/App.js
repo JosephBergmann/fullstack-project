@@ -1,6 +1,14 @@
+import React from 'react';
+import {Route, Switch} from 'react-router-dom';
+import IndexFormPage from './components/LoginFormPage'
+
 function App() {
   return (
-    <h1>StackExchange Clone</h1>
+    <Switch>
+        <Route path="/">
+          <IndexFormPage />
+        </Route>
+    </Switch>
   );
 }
 

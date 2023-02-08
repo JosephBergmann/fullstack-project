@@ -8,7 +8,15 @@ import configureStore from './store';
 import csrfFetch, { restoreCSRF } from './store/csrf';
 import * as sessionActions from './store/session';
 
-const store = configureStore();
+let initialState = {
+  state: {
+    session: {
+      user: false
+    }
+  }
+}
+
+const store = configureStore(initialState);
 
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;

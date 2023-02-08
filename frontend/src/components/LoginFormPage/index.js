@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import './index.css'
 
 const IndexFormPage = () => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => {
+        return state.session});
     const[email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
+    // let sessionUser = false;
+
     if(sessionUser) return <Redirect to="/"  />
 
-    const handleClick = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
         
@@ -30,21 +34,29 @@ const IndexFormPage = () => {
         })
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
-                {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
-            <label>
-                Email
+        <div id="login-container">
+            <form onSubmit={handleSubmit} id="malkhaz">
+                <div id="error-box">
+                    <ul>
+                        {errors.map(error => <li key={error}>{error}</li>)}
+                    </ul>
+                </div>
+                <div id="input-container">
+                <label>
+                    Email
+                    
+                </label>
                 <input type="text"
-                    value={email} onChange={(e) => setEmail(e.target.value)} required />
-            </label>
-            <label>
-                Password
+                        value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <label>
+                    Password
+                    
+                </label>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-            </label>
-            <button type="submit">Log In</button>
-        </form>
+                <button type="submit">Log In</button>
+                </div>
+            </form>
+        </div>
     )
 }
 export default IndexFormPage;
