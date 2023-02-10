@@ -14,7 +14,7 @@ class ApplicationController < ActionController::API
         end
     end
 
-    def require_logged_out
+    def require_logged_out  
         if logged_in?
             render json: { errors: ['Must be logged out'] }, status: :unauthorized
         end
