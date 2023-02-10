@@ -1,12 +1,25 @@
-#login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
+.page{
+  background-color: #ccc;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-content: center;
+}
+
+.login-container {
+  background-color: #fff;
+  height: 30vh;
+  padding: 20px;
+  width: 20vh;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px grey;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* height: 50vh; */
   }
   
   #login-form {
-    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px #ccc;

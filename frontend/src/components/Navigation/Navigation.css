@@ -1,0 +1,12 @@
+.thebar{
+    display: flex;
+    align-items: center;
+}
+
+.profile-dropdown {
+    color: red;
+}
+
+.fa-solid fa-user-circle {
+    background-color: red
+}

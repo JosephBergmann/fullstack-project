@@ -11,7 +11,6 @@ const IndexFormPage = () => {
     const[email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
-
     // let sessionUser = false;
 
     if(sessionUser) return <Redirect to="/"  />
@@ -34,28 +33,30 @@ const IndexFormPage = () => {
         })
     }
     return (
-        <div id="login-container">
-            <form onSubmit={handleSubmit} id="malkhaz">
-                <div id="error-box">
-                    <ul>
-                        {errors.map(error => <li key={error}>{error}</li>)}
-                    </ul>
-                </div>
-                <div id="input-container">
-                <label>
-                    Email
-                    
-                </label>
-                <input type="text"
-                        value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <label>
-                    Password
-                    
-                </label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-                <button type="submit">Log In</button>
-                </div>
-            </form>
+        <div className="page">
+            <div className="login-container">
+                <form onSubmit={handleSubmit} id="malkhaz">
+                    <div id="error-box">
+                        <ul>
+                            {errors.map(error => <li key={error}>{error}</li>)}
+                        </ul>
+                    </div>
+                    <div id="input-container">
+                    <label>
+                        Email
+                        
+                    </label>
+                    <input type="text"
+                            value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <label>
+                        Password
+                        
+                    </label>
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                    <button type="submit">Log In</button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

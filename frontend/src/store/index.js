@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 import sessionsReducer from './session';
 import logger from 'redux-logger'
 
-const rootReducer = () => combineReducers({
-    sessionsReducer 
+const rootReducer = combineReducers({
+    sessionsReducer
 });
 
 // let enhancer;

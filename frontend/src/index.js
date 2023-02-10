@@ -8,15 +8,15 @@ import configureStore from './store';
 import csrfFetch, { restoreCSRF } from './store/csrf';
 import * as sessionActions from './store/session';
 
-let initialState = {
-  state: {
-    session: {
-      user: false
-    }
-  }
-}
+// let initialState = {
+//   // state: {
+//   //   session: {
+//   //     user: false
+//   //   }
+//   // }
+// }
 
-const store = configureStore(initialState);
+const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;
@@ -43,8 +43,8 @@ const renderApplication = () =>
   );
 }
 
-if (sessionStorage.getItem("X-CSRF-Token") === null) {
-  restoreCSRF().then(renderApplication);
+if (sessionStorage.getItem("X-CSRF-Token") === null || sessionStorage.getItem('currentUser') === null) {
+  store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
   renderApplication();
 }

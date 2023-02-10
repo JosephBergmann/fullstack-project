@@ -1,15 +1,28 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
-// import './Navigation.css';
+import './Navigation.css';
+import { logout } from '../../store/session.js'
 
 const Navigation = () => {
-    const sessionUser = useSelector(state => {return state.session});
+    const dispatch = useDispatch();
+
+    const sessionUser = useSelector(state => {
+        return state.sessionsReducer.user});
+    const handleLogout = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        dispatch(logout());
+    }
     let sessionLinks;
 
-    if
-    (sessionUser) sessionLinks = (<ProfileButton user={sessionUser} />)
+    if(sessionUser) sessionLinks = (
+    <><button onClick={handleLogout}>Log out</button>
+    {/* <ProfileButton user={sessionUser} /></>) */}
+    </>)
+    
     else
     sessionLinks = (
         <>
@@ -20,7 +33,7 @@ const Navigation = () => {
 
     return(
         <ul>
-            <li>
+            <li className="thebar">
                 <NavLink exact to="/">Home</NavLink>
                 {sessionLinks}
             </li>
