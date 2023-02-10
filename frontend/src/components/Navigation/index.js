@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-import { logout } from '../../store/session.js'
+import { logout } from '../../store/session.js';
 
 const Navigation = () => {
     const dispatch = useDispatch();

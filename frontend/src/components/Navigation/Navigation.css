@@ -1,12 +1,16 @@
 .thebar{
     display: flex;
-    align-items: center;
+    justify-content: flex-end;
 }
 
 .profile-dropdown {
     color: red;
 }
 
-.fa-solid fa-user-circle {
+/* .fa-solid fa-user-circle {
     background-color: red
-}
+} */
+
+/* NavLink{
+    background-color: red;
+} */
