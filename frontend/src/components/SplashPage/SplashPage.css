@@ -1,0 +1,45 @@
+.inner-boxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.two-boxes {
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    padding: 20px;
+}
+
+.box1{
+    width: 300px;
+    height: 200px;
+    background-color: lightgray;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.box2{
+    width: 300px;
+    height: 200px;
+    background-color: lightgray;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+/* .box1 .text {
+} */
