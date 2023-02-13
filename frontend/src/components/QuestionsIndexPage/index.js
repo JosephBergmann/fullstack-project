@@ -5,5 +5,13 @@ import { Redirect } from 'react-router-dom';
 
 const QuestionsIndexPage = () => {
     const dispatch = useDispatch();
-    const questions = useSelector(state => Object.values(state.questions))
+    useEffect(
+        useDispatch(fetchQuestions)
+    )
+    // const questions = useSelector(state => Object.values(state.questions))
+    return(
+        <h1>hi</h1>
+    )
 }
+
+export default QuestionsIndexPage
