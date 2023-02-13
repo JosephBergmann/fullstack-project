@@ -1,13 +1,15 @@
-const RECEIVE_QUESTION = 'question/RECEIVE_QUESTION';
-const RECEIVE_QUESTIONS = 'question/RECEIVE_QUESTION';
+import csrfFetch from "./csrf";
+
+const ADD_QUESTION = 'question/RECEIVE_QUESTION';
+const SET_QUESTIONS = 'question/SET_QUESTIONS';
 
 const receiveQuestion = (question) => ({
-    type: RECEIVE_QUESTION,
+    type: ADD_QUESTION,
     question
 })
 
-const receiveQuestions = (questions) => ({
-    type: RECEIVE_QUESTIONS,
+const setQuestions = (questions) => ({
+    type: SET_QUESTIONS,
     questions
 })
 
@@ -16,8 +18,18 @@ export const fetchQuestion = (questionId) => async dispatch => {
         Not sure if its a good idea to use csrfFetch here. Return here if there is an error
     */
     const response = await csrfFetch(`/api/questions/${questionId}`)
+    const data = await response.json();
+    dispatch(setQuestions(data.questions));
+    return response 
 }
 
-const questionsReducer = (state = {}, action) => {
-
+const questionsReducer = (oldState = {}, action) => {
+    let state = oldState
+    switch(action.type){
+        case SET_QUESTIONS:
+            return action.questions;
+        default:
+            return state;
+    }
 }
+export default questionsReducer;
