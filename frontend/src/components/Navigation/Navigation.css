@@ -1,6 +1,8 @@
 .thebar{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    height: 40px;
+    background-color: grey
 }
 
 .profile-dropdown {

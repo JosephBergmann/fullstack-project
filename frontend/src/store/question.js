@@ -8,7 +8,8 @@ const receiveQuestion = (question) => ({
     question
 })
 
-const setQuestions = (questions) => ({
+const setQuestions = (questions) => (
+    {
     type: SET_QUESTIONS,
     questions
 })
@@ -19,15 +20,15 @@ export const fetchQuestions = (questionId = 0) => async dispatch => {
     */
     const response = await csrfFetch(`/api/questions/`)
     const data = await response.json();
-    dispatch(setQuestions(data.questions));
-    return response 
+    dispatch(setQuestions(data));
+    return response
 }
 
 const questionsReducer = (oldState = {}, action) => {
     let state = oldState
     switch(action.type){
         case SET_QUESTIONS:
-            return action.questions;
+            return {...state, ...action.questions};
         default:
             return state;
     }

@@ -19,25 +19,23 @@ const Navigation = () => {
     let sessionLinks;
 
     if(sessionUser) sessionLinks = (
-    <><button onClick={handleLogout}>Log out</button>
+    <div className="login-links"><button onClick={handleLogout}>Log out</button>
     {/* <ProfileButton user={sessionUser} /></>) */}
-    </>)
+    </div>)
     
     else
     sessionLinks = (
-        <>
+        <div className="login-links">
             <NavLink to={"/login"}>Log In</NavLink>
             <NavLink to={"/signup"}> Sign Up</NavLink>
-        </>
+        </div>
     )
 
     return(
-        <ul>
-            <li className="thebar">
-                <NavLink exact to="/">Home</NavLink>
-                {sessionLinks}
-            </li>
-        </ul>
+        <div className="thebar">
+            <NavLink exact to="/">Home</NavLink>
+            {sessionLinks}
+        </div>
     )
 }
 
