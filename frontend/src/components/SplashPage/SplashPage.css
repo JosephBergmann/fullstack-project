@@ -1,7 +1,18 @@
-.inner-boxes {
+.outer-box{
+    margin-top: 40px;
+    background-color: rgb(38, 37, 37);
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.inner-boxes {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    font-size: 40px;
 }
 
 .two-boxes {
@@ -9,12 +20,13 @@
     flex-direction: row;
     align-items: space-between;
     padding: 20px;
+    color: black;
 }
 
 .box1{
     width: 300px;
     height: 200px;
-    background-color: lightgray;
+    background-color: rgb(248, 199, 153);
     margin: auto;
     display: flex;
     align-items: center;
@@ -29,7 +41,7 @@
 .box2{
     width: 300px;
     height: 200px;
-    background-color: lightgray;
+    background-color: rgb(147, 221, 248);
     margin: auto;
     display: flex;
     align-items: center;
