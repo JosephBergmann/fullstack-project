@@ -1,4 +1,4 @@
-function ListItem({question}){
+function ListQuestion({question}){
     const {title, body, author} = question
 
     return (
@@ -8,3 +8,4 @@ function ListItem({question}){
         </div>
     )
 }
+export default ListQuestion;
