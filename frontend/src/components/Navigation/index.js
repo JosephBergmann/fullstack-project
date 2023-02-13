@@ -26,8 +26,8 @@ const Navigation = () => {
     else
     sessionLinks = (
         <div className="login-links">
-            <NavLink to={"/login"}>Log In</NavLink>
-            <NavLink to={"/signup"}> Sign Up</NavLink>
+            <NavLink className="link1" to={"/login"}>Log In</NavLink>
+            <NavLink className="link2" to={"/signup"}> Sign Up</NavLink>
         </div>
     )
 
