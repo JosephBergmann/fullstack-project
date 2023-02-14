@@ -1,4 +1,10 @@
 class Api::AnswersController < ApplicationController
+
+    def index
+        @answers = Answer.all
+        render :index
+    end
+
     def show
     end
 

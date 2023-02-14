@@ -13,10 +13,7 @@ const setQuestions = (questions) => ({
     questions
 })
 
-export const fetchQuestions = (questionId = 0) => async dispatch => {
-    /*NOTE 
-        Not sure if its a good idea to use csrfFetch here. Return here if there is an error
-    */
+export const fetchQuestions = () => async dispatch => {
     const response = await csrfFetch(`/api/questions/`)
     const data = await response.json();
     dispatch(setQuestions(data));
