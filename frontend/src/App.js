@@ -10,9 +10,6 @@ function App() {
     <>
     <Navigation />
       <Switch>
-          <Route path="/">
-            <SplashPage />
-          </Route>
           <Route path="/login">
             <IndexFormPage />
           </Route>
@@ -21,6 +18,9 @@ function App() {
           </Route>
           <Route path="/questions">
             <QuestionsIndexPage />
+          </Route>
+          <Route path="/">
+            <SplashPage />
           </Route>
       </Switch>
     </>

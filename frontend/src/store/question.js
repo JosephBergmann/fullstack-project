@@ -8,8 +8,7 @@ const receiveQuestion = (question) => ({
     question
 })
 
-const setQuestions = (questions) => (
-    {
+const setQuestions = (questions) => ({
     type: SET_QUESTIONS,
     questions
 })

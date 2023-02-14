@@ -31,6 +31,12 @@ class User < ApplicationRecord
     class_name: :Question,
     dependent: :destroy
 
+    has_many :answers,
+    primary_key: :id,
+    foreign_key: :poster_id,
+    class_name: :Answer,
+    dependent: :destroy
+    
     private
 
     def generate_unique_session_token
