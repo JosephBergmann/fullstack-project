@@ -19,6 +19,8 @@ function App() {
           <Route path="/questions">
             <QuestionsIndexPage />
           </Route>
+          <Route path="/questions/:questionId">
+          </Route>
           <Route path="/">
             <SplashPage />
           </Route>
