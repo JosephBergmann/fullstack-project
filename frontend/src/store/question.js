@@ -3,9 +3,9 @@ import csrfFetch from "./csrf";
 const SET_QUESTION = 'question/RECEIVE_QUESTION';
 const SET_QUESTIONS = 'question/SET_QUESTIONS';
 
-const setQuestion = (questionId) => ({
+const setQuestion = (question) => ({
     type: SET_QUESTION,
-    questionId
+    question
 })
 
 const setQuestions = (questions) => ({
@@ -33,8 +33,8 @@ const questionsReducer = (oldState = {}, action) => {
         case SET_QUESTIONS:
             return {...state, ...action.questions};
         case SET_QUESTION:
-            state.question = action.question;
-            return {...state}
+            // state.question = action.question;
+            return {...state, question: action.question}
         default:
             return state;
     }

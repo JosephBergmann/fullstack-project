@@ -5,6 +5,8 @@ import SignupFormPage from './components/SignupFormPage'
 import Navigation from './components/Navigation';
 import QuestionsIndexPage from './components/QuestionsIndexPage'
 import SplashPage from './components/SplashPage';
+import ShowQuestion from './components/ShowQuestion';
+
 function App() {
   return (
     <>
@@ -16,10 +18,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/questions">
+          <Route exact path="/questions">
             <QuestionsIndexPage />
           </Route>
           <Route path="/questions/:questionId">
+            <ShowQuestion />
           </Route>
           <Route path="/">
             <SplashPage />
