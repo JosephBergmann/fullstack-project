@@ -20,6 +20,13 @@ class Api::QuestionsController < ApplicationController
     end
 
     def destroy
+        @question = current_user.questions.find_by(params[:id])
+        if !@question
+            render json: {message: 'Unauthorized'}, status: :unauthorized
+            return
+        end
+        @question.destroy
+        render :show
     end
 
     private

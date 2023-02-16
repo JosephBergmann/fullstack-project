@@ -24,6 +24,9 @@ function App() {
           <Route path="/questions/:questionId">
             <ShowQuestion />
           </Route>
+          <Route path="/questions/ask">
+            
+          </Route>
           <Route path="/">
             <SplashPage />
           </Route>
