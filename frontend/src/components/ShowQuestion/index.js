@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom"
 import { useEffect } from "react"
 import * as questionActions from '../../store/question.js'
 import { useDispatch, useSelector } from "react-redux"
+import AnswersList from "./AnswersList.js"
+
 const ShowQuestion = () => {
     const dispatch = useDispatch();
     const question = useSelector(state => {
@@ -20,7 +22,6 @@ const ShowQuestion = () => {
         return <div>Loading</div>
     }
 
-    debugger
     return (
         // <h1>hi</h1>
         <>
@@ -29,10 +30,11 @@ const ShowQuestion = () => {
                 <div>Asked {question.question.createdAt}</div>
                 <div>Modified {question.question.updatedAt}</div>
             </div>
-            {/* <div className="question-body"> */}
+            <div className="question-body">
                 <div className="votes"></div>
                 <p>{question.question.body}</p>
-            {/* </div> */}
+            </div>
+            <AnswersList answers={question.question.answers} />
         </>
     )
 }
