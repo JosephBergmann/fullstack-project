@@ -1,4 +1,8 @@
-const Answer = () => {
-    return <div>hi</div>
+const Answer = ({answer}) => {
+    return (
+        <div className="answer">
+            {answer.body}
+        </div>
+    )
 }
 export default Answer;

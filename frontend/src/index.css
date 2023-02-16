@@ -1,7 +1,22 @@
 /* TODO Add site wide styles */
+@import './reset.css';
+
+html {
+    width: 100%;
+}
+
 body {
     background-color: #c6bdbd;
     /* border-radius: 10px; */
     display: flex;
     justify-content: center;
+    width: 100%;
 }
+
+#root {
+    width: 100%;
+}
+.app {
+    width: 100%;
+}
+

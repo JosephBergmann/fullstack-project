@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import './index.css'
 
 const IndexFormPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => {
         return state.session});
     const[email, setEmail] = useState('');
@@ -30,7 +31,7 @@ const IndexFormPage = () => {
             if(data?.errors) setErrors(data.errors);
             else if (data) setErrors([data]);
             else setErrors([res.statustext]);
-        })
+        }).then(history.push('/questions/'))
     }
     return (
         <div className="page">
@@ -44,13 +45,11 @@ const IndexFormPage = () => {
                     <div id="input-container">
                     <label>
                         Email
-                        
                     </label>
                     <input type="text"
                             value={email} onChange={(e) => setEmail(e.target.value)} required />
                     <label>
-                        Password
-                        
+                        Password                       
                     </label>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
                     <button type="submit">Log In</button>

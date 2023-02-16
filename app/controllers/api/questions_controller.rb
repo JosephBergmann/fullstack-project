@@ -1,10 +1,21 @@
 class Api::QuestionsController < ApplicationController
+    wrap_parameters include: Question.attribute_names
+    
     def index
         @questions = Question.all;
         render :index
     end
 
     def create
+        debugger
+        @question = Question.new(question_params);
+        @question.poster_id = current_user.id
+        if @question.save
+            debugger
+            render :show
+        else
+            render json: {errors: 'something went wrong'}
+        end
     end
 
     def show
@@ -31,6 +42,6 @@ class Api::QuestionsController < ApplicationController
 
     private
     def question_params
-        params.require(:question).permit(:title, :body, :poster_id)
+        params.require(:question).permit(:title, :body)
     end
 end

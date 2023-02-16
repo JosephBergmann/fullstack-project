@@ -14,7 +14,7 @@ const QuestionsIndexPage = () => {
 
     const questions = useSelector(state => Object.values(state.questionsReducer))
     const currUser = useSelector(state => state.sessionsReducer.user)
-    
+
     const handleClick = (e) => {
         e.preventDefault();
         

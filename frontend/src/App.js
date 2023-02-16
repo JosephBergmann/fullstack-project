@@ -6,10 +6,10 @@ import Navigation from './components/Navigation';
 import QuestionsIndexPage from './components/QuestionsIndexPage'
 import SplashPage from './components/SplashPage';
 import ShowQuestion from './components/ShowQuestion';
-
+import NewQuestionForm from './components/NewQuestionForm'
 function App() {
   return (
-    <>
+    <div className="app">
     <Navigation />
       <Switch>
           <Route path="/login">
@@ -21,17 +21,17 @@ function App() {
           <Route exact path="/questions">
             <QuestionsIndexPage />
           </Route>
+          <Route path="/questions/ask">
+            <NewQuestionForm />
+          </Route>
           <Route path="/questions/:questionId">
             <ShowQuestion />
-          </Route>
-          <Route path="/questions/ask">
-            
           </Route>
           <Route path="/">
             <SplashPage />
           </Route>
       </Switch>
-    </>
+    </div>
   );
 }
 
