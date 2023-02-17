@@ -26,12 +26,40 @@ ApplicationRecord.transaction do
     )
   
     # More users
-    10.times do 
-      User.create!({
-        username: Faker::Internet.unique.username(specifier: 3),
+    # 10.times do 
+    #   User.create!({
+    #     username: Faker::Internet.unique.username(specifier: 3),
+    #     email: Faker::Internet.unique.email,
+    #     password: 'password'
+    #   }) 
+    # end
+    20.times do
+      User.create(
+        username: Faker::Internet.unique.username,
+        password: "password",
         email: Faker::Internet.unique.email,
-        password: 'password'
-      }) 
+        session_token: Faker::Alphanumeric.alpha(number: 10)
+      )
+    end
+    
+    # Create 20 questions, with random users as posters
+    users = User.all
+    20.times do
+      Question.create(
+        title: Faker::Lorem.sentence(word_count: 5),
+        body: Faker::Lorem.paragraph(sentence_count: 3),
+        poster: users.sample
+      )
+    end
+    
+    # Create 20 answers, with random users and questions
+    questions = Question.all
+    20.times do
+      Answer.create(
+        body: Faker::Lorem.paragraph(sentence_count: 3),
+        poster: users.sample,
+        question: questions.sample
+      )
     end
   
     puts "Done!"
