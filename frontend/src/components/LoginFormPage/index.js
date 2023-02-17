@@ -52,7 +52,7 @@ const IndexFormPage = () => {
                         Password                       
                     </label>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-                    <button type="submit">Log In</button>
+                    <button id="log-in" type="submit">Log In</button>
                     </div>
                 </form>
             </div>

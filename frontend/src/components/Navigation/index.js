@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import { logout } from '../../store/session.js';
+import DropdownMenu from './DropdownMenu';
 
 const Navigation = () => {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const Navigation = () => {
     let sessionLinks;
 
     if(sessionUser) sessionLinks = (
+
     <div className="login-links"><button onClick={handleLogout}>Log out</button>
     {/* <ProfileButton user={sessionUser} /></>) */}
     </div>)
@@ -33,7 +35,10 @@ const Navigation = () => {
 
     return(
         <div className="thebar">
+            <div className="left-side">
+            <DropdownMenu />
             <NavLink exact to="/">Home</NavLink>
+            </div>
             {sessionLinks}
         </div>
     )

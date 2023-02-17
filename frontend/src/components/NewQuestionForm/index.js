@@ -23,18 +23,19 @@ const NewQuestionForm = () => {
             body,
             posterId: currUser.userId
         }
-
+        debugger
         dispatch(createQuestion(data))
+        history.push('/questions/')
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Title:</label>
-                <input type="text"
-                id="title"
-                value={title}
-                onChange={e => setTitle(e.target.value)}
+                    <input type="text"
+                    id="title"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
                 />
                 <label>Body: </label>
                     <textarea 

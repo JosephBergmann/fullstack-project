@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/JosephBergmann/fullstack-project/issues"
   },
-  "homepage": "https://github.com/JosephBergmann/fullstack-project#readme"
+  "homepage": "https://github.com/JosephBergmann/fullstack-project#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0"
+  }
 }

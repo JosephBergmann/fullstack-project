@@ -47,10 +47,10 @@
     margin-top: 10px;
   }
   
-  button {
+  #log-in {
     margin-top: 20px;
     padding: 8px 20px;
-    background-color: #4caf50;
+    background-color: rgb(42, 159, 255);
     color: #fff;
     border: none;
     border-radius: 5px;

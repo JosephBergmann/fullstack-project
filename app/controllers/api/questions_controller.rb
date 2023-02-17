@@ -7,11 +7,9 @@ class Api::QuestionsController < ApplicationController
     end
 
     def create
-        debugger
         @question = Question.new(question_params);
         @question.poster_id = current_user.id
         if @question.save
-            debugger
             render :show
         else
             render json: {errors: 'something went wrong'}

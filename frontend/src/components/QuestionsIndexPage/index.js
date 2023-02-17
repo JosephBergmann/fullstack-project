@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback} from 'react';
 import { fetchQuestions } from '../../store/question.js';
 import { useDispatch, useSelector} from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
@@ -20,7 +20,7 @@ const QuestionsIndexPage = () => {
         
         if (currUser)
         {
-            history.push('/questions/new')
+            history.push('/questions/ask')
         } else
         {
             history.push('/login')
