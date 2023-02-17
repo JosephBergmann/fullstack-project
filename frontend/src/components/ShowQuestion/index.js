@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import * as questionActions from '../../store/question.js'
 import { useDispatch, useSelector } from "react-redux"
 import AnswersList from "./AnswersList.js"
+import './ShowQuestion.css';
 
 const ShowQuestion = () => {
     const dispatch = useDispatch();
@@ -25,9 +26,9 @@ const ShowQuestion = () => {
         // <h1>hi</h1>
         <>
             <div className="question-header">
-                <h1>{question.title}</h1>
-                <div>Asked {question.createdAt}</div>
-                <div>Modified {question.updatedAt}</div>
+                <h1 className="question-title">{question.title}</h1>
+                <div className="question-timestamp">Asked {question.createdAt}</div>
+                <div className="question-timestamp">Modified {question.updatedAt}</div>
             </div>
             <div className="question-body">
                 <div className="votes"></div>

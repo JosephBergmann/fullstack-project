@@ -54,7 +54,7 @@ ApplicationRecord.transaction do
     
     # Create 20 answers, with random users and questions
     questions = Question.all
-    20.times do
+    100.times do
       Answer.create(
         body: Faker::Lorem.paragraph(sentence_count: 3),
         poster: users.sample,

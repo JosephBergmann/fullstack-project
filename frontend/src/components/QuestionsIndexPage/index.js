@@ -3,6 +3,7 @@ import { fetchQuestions } from '../../store/question.js';
 import { useDispatch, useSelector} from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import QuestionList from './QuestionsList';
+import './QuestionsListIndex.css'
 
 const QuestionsIndexPage = () => {
     const dispatch = useDispatch();
@@ -30,8 +31,10 @@ const QuestionsIndexPage = () => {
     return(
         // <h1>hi</h1>
         <div>
-            <h1>All Questions</h1>
-            <button onClick={handleClick}>Ask Question</button>
+            <div className="header">
+                <h1>All Questions</h1>
+                <button onClick={handleClick}>Ask Question</button>
+            </div>
             <QuestionList questions={questions} />
         </div>
     )

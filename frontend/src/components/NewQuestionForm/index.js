@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { createQuestion } from "../../store/question"
+import './NewQuestionForm.css'
 
 const NewQuestionForm = () => {
     const currUser = useSelector(state => state.sessionsReducer.user);
@@ -31,20 +32,20 @@ const NewQuestionForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Title:</label>
+                <label className="title">Title:</label>
                     <input type="text"
                     id="title"
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                 />
-                <label>Body: </label>
+                <label className="body">Body: </label>
                     <textarea 
                         id="body"
                         value={body}
                         onChange={e => setBody(e.target.value)}
                     />
             </div>
-            <button type="submit">Submit</button>
+            <button className="submit-question" type="submit">Submit</button>
         </form>
     )
 }

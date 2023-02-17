@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 24px;
+}
+
+.qlist {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .list-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 4px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .list-item p {
+    margin-top: 10px;
+  }
+  
+  .list-item a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  

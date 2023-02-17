@@ -5,6 +5,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .inner-boxes {
@@ -13,6 +15,8 @@
     color: white;
     text-align: center;
     font-size: 40px;
+    margin-top: 60px;
+    margin-bottom: 5rem;
 }
 
 .two-boxes {
