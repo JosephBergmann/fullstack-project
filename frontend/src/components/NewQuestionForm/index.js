@@ -11,9 +11,10 @@ const NewQuestionForm = () => {
 
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
+    // const [isSubmitting, setIsSubmitting] = useState(false);
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if(!currUser){
             history.push('/login');
@@ -25,7 +26,7 @@ const NewQuestionForm = () => {
             posterId: currUser.userId
         }
         debugger
-        dispatch(createQuestion(data))
+        dispatch(createQuestion(data));
         history.push('/questions/')
     }
 

@@ -74,7 +74,10 @@ const questionsReducer = (oldState = {}, action) => {
             const {[action.questionId]: _remove, ...newState } = state;
             return newState;
         case ADD_QUESTION:
-            return {...state, [action.question.id]: action.question}
+            // return {...state, [action.question.id]: action.question}
+            // This seems like it resolves the issue where a duplicate question appears
+            // on the show page initially. Consider revisiting
+            return {...state}
         default:
             return state;
     }
