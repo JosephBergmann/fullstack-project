@@ -4,7 +4,7 @@ class Api::AnswersController < ApplicationController
         @answers = Answer.all
         render :index
     end
-
+    
     def show
     end
 
@@ -18,9 +18,26 @@ class Api::AnswersController < ApplicationController
     end
 
     def update
+        @answer = current_user.answers.find_by(params[:id]);
+
+        if !@answer
+            render json: {message: 'Unauthorized'}, status: :unauthorized
+            return 
+        end
+        @answer.update!(answer_params)
+        render json: @answer
+
     end
 
     def destroy
+        @answer = current_user.answers.find_by(params[:id]);
+        if !@answer
+            render json: {message: 'Unauthorized'}, status: :unauthorized
+            return
+        end
+        #still unsure if we want hard errors here
+        @answer.destroy!
+        render :show
     end
 
     private 

@@ -18,7 +18,7 @@ class Api::QuestionsController < ApplicationController
 
     def show
         @question = Question.find_by(id: params[:id])
-        if(@question)
+        if @question
             render :show
         else
             render json: {errors: 'No question exists with that id'}
@@ -26,6 +26,12 @@ class Api::QuestionsController < ApplicationController
     end
 
     def update
+        @question = Question.find_by(id: params[:id])
+        if !@question
+            render json: {message: 'Unauthorized'}, status: :unauthorized
+        end
+        @question.update!(question_params)
+        render json: @question
     end
 
     def destroy
@@ -34,6 +40,7 @@ class Api::QuestionsController < ApplicationController
             render json: {message: 'Unauthorized'}, status: :unauthorized
             return
         end
+        #still not sure if we want soft errors here
         @question.destroy
         render :show
     end
