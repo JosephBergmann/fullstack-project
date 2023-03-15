@@ -8,8 +8,9 @@ import './ShowQuestion.css';
 const ShowQuestion = () => {
     const dispatch = useDispatch();
     const { questionId } = useParams();
-    const question = useSelector(state => {
-        return state.questionsReducer[questionId]})
+    const question = useSelector(state => {return state.questionsReducer[questionId]});
+    const user = useSelector(state => {return state.sessionsReducer.user});
+
     //use effect dispatch request to get the specific question and its answers
     useEffect( () => {
         dispatch(questionActions.fetchQuestion(questionId))
@@ -34,6 +35,7 @@ const ShowQuestion = () => {
                 <div className="votes"></div>
                 <p>{question.body}</p>
             </div>
+            {!user ? <p>Log in to Answer</p> : <p>Answer box</p>}
             <AnswersList />
         </>
     )
