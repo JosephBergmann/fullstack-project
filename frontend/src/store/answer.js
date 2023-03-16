@@ -1,10 +1,10 @@
 import csrfFetch from "./csrf";
 import { SET_QUESTION } from "./question";
 const ADD_ANSWER = 'answer/ADD_ANSWER';
-const addAnswer = (answer) => {
+const addAnswer = (answer) => ({
     type: ADD_ANSWER,
     answer
-}
+})
 
 export const createAnswer = (answer) => async dispatch => {
     const {posterId, questionId, body} = answer;
@@ -20,8 +20,8 @@ export const createAnswer = (answer) => async dispatch => {
 }
 const answersReducer = (state = {}, action) => {
     switch(action.type){
-        // case ADD_ANSWER:
-        //     return {...state, ...action.answers}
+        case ADD_ANSWER:
+            return {...state, ...action.answers}
         case SET_QUESTION:
             return {...state, ...action.payload.answers}
         default:
