@@ -1,4 +1,8 @@
-import { SET_QUESTION } from "./question"
+import { SET_QUESTION } from "./question";
+
+export const createAnswer = (question) => async dispatch => {
+    
+}
 const answersReducer = (state = {}, action) => {
     switch(action.type){
         case SET_QUESTION:
@@ -8,4 +12,4 @@ const answersReducer = (state = {}, action) => {
     }
 } 
 
-export default answersReducer
+export default answersReducer;

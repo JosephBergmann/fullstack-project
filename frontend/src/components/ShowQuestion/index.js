@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import * as questionActions from '../../store/question.js'
 import { useDispatch, useSelector } from "react-redux"
 import AnswersList from "./AnswersList.js"
+import WriteAnswer from "./WriteAnswer.js"
 import './ShowQuestion.css';
 
 const ShowQuestion = () => {
@@ -10,7 +11,7 @@ const ShowQuestion = () => {
     const { questionId } = useParams();
     const question = useSelector(state => {return state.questionsReducer[questionId]});
     const user = useSelector(state => {return state.sessionsReducer.user});
-
+    console.log(user)
     //use effect dispatch request to get the specific question and its answers
     useEffect( () => {
         dispatch(questionActions.fetchQuestion(questionId))
@@ -35,7 +36,9 @@ const ShowQuestion = () => {
                 <div className="votes"></div>
                 <p>{question.body}</p>
             </div>
-            {!user ? <p>Log in to Answer</p> : <p>Answer box</p>}
+            <div>
+                {!user ? (<h2>Log in to Answer</h2>) : (<WriteAnswer />)}
+            </div>
             <AnswersList />
         </>
     )
