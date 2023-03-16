@@ -51,14 +51,14 @@ export const deleteQuestion = (questionId) => async dispatch => {
 
 
 export const createQuestion = (question) => async dispatch => {
-    const {title, body, posterId} = question
+    const {title, body, posterId} = question;
     const response = await csrfFetch(`/api/questions`,
     {
         method: `POST`,
         body: JSON.stringify({title, body, posterId})
     })
     const data = await response.json();
-    dispatch(addQuestion(data))
+    dispatch(addQuestion(data));
     return response;
 }
 
