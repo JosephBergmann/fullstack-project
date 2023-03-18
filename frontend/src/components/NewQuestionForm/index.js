@@ -25,7 +25,7 @@ const NewQuestionForm = () => {
             body,
             posterId: currUser.userId
         }
-        debugger
+        
         dispatch(createQuestion(data));
         history.push('/questions/')
     }

@@ -1,7 +1,8 @@
 const Answer = ({answer}) => {
     return (
         <div className="answer">
-            {answer.body}
+            <h3>{answer.poster}</h3>
+            <p>{answer.body}</p>
         </div>
     )
 }

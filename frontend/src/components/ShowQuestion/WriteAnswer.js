@@ -1,10 +1,21 @@
 import {useState} from "react"
-
+import {useHistory} from "react-router-dom"
+import { createAnswer } from "../../store/answer";
 const WriteAnswer = () => {
+    let history = useHistory();
     let [body, setBody] = useState("");
 
     const handleSubmit = (e) => {
-        
+        e.preventDefault();
+        if(!currUser){
+            history.push('/login');
+        }
+
+        const data = {
+            
+        }
+
+        dispatchEvent(createAnswer(data));
     }
     return(
         <form onSubmit={handleSubmit}>
