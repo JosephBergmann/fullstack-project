@@ -11,14 +11,12 @@ const ShowQuestion = () => {
     const { questionId } = useParams();
     const question = useSelector(state => {return state.questionsReducer[questionId]});
     const user = useSelector(state => {return state.sessionsReducer.user});
-    console.log(user)
+
     //use effect dispatch request to get the specific question and its answers
     useEffect( () => {
         dispatch(questionActions.fetchQuestion(questionId))
     }, [dispatch, questionId])
-    // debugger
-    
-    // debugger
+
 
     if (!question){
         return <div>Loading</div>

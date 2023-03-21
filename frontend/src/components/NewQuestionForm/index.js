@@ -5,6 +5,7 @@ import { createQuestion } from "../../store/question"
 import './NewQuestionForm.css'
 
 const NewQuestionForm = () => {
+    debugger
     const currUser = useSelector(state => state.sessionsReducer.user);
     const history = useHistory();
     const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const NewQuestionForm = () => {
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                 />
-                <label className="body">Body: </label>
+                <label className="body">Body:</label>
                     <textarea 
                         id="body"
                         value={body}
