@@ -35,7 +35,7 @@ const ShowQuestion = () => {
                 <p>{question.body}</p>
             </div>
             <div>
-                {!user ? (<h2>Log in to Answer</h2>) : (<WriteAnswer />)}
+                {!user ? (<h2>Log in to Answer</h2>) : (<WriteAnswer questionId={questionId}/>)}
             </div>
             <AnswersList />
         </>

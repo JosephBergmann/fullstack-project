@@ -1,13 +1,14 @@
-import {useState} from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import {useHistory} from "react-router-dom"
 import { createAnswer } from "../../store/answer";
 
 
-const WriteAnswer = () => {
+const WriteAnswer = (questionId) => {
     let history = useHistory();
     let [body, setBody] = useState("");
     const currUser = useSelector(state => state.sessionsReducer.user)
+    // const questionId = useSelector(state => state.questionsReducer)
     const handleSubmit = (e) => {
         e.preventDefault();
         if(!currUser){
@@ -15,7 +16,9 @@ const WriteAnswer = () => {
         }
 
         const data = {
-            
+            posterId: currUser.id,
+            questionId: questionId,
+            body
         }
 
         dispatchEvent(createAnswer(data));
