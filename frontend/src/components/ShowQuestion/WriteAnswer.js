@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {useHistory} from "react-router-dom"
 import { createAnswer } from "../../store/answer";
 
-
 const WriteAnswer = (questionId) => {
+    const dispatch = useDispatch();
     let history = useHistory();
     let [body, setBody] = useState("");
     const currUser = useSelector(state => state.sessionsReducer.user)
@@ -21,7 +21,7 @@ const WriteAnswer = (questionId) => {
             body
         }
 
-        dispatchEvent(createAnswer(data));
+        dispatch(createAnswer(data));
     }
     return(
         <form onSubmit={handleSubmit}>
