@@ -17,7 +17,7 @@ const WriteAnswer = (questionId) => {
 
         const data = {
             posterId: currUser.id,
-            questionId: questionId,
+            questionId: parseInt(questionId.questionId),
             body
         }
 

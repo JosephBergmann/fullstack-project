@@ -8,6 +8,7 @@ const addAnswer = (answer) => ({
 
 export const createAnswer = (answer) => async dispatch => {
     const {posterId, questionId, body} = answer;
+    debugger
     const response = await csrfFetch(`/api/answers`,
     {
         method: `POST`,

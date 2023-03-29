@@ -1,4 +1,7 @@
 class Api::AnswersController < ApplicationController
+    # before_action :snake_case_params
+    wrap_parameters include: Answer.attribute_names
+    # before_action :require_logged_in, only: [:create, :update] 
 
     def index
         @answers = Answer.all
@@ -9,7 +12,8 @@ class Api::AnswersController < ApplicationController
     end
 
     def create
-        @answer = Answer.new(answer_params)
+        @answer = Answer.new(poster_id: params["poster_id"], question_id: params["question_id"], body: params["body"])
+        debugger
         if @answer.save
             render json: @answer
         else
@@ -44,4 +48,8 @@ class Api::AnswersController < ApplicationController
     def answer_params
         params.require(:answer).permit(:poster_id, :question_id, :body)
     end
+    
+    # def snake_case_params
+    #     params.deep_transform_keys!(&:underscore)
+    # end
 end
