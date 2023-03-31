@@ -8,7 +8,6 @@ const addAnswer = (answer) => ({
 
 export const createAnswer = (answer) => async dispatch => {
     const {posterId, questionId, body} = answer;
-    debugger
     const response = await csrfFetch(`/api/answers`,
     {
         method: `POST`,
@@ -22,7 +21,7 @@ export const createAnswer = (answer) => async dispatch => {
 const answersReducer = (state = {}, action) => {
     switch(action.type){
         case ADD_ANSWER:
-            return {...state, ...action.answers}
+            return {...state,  [action.answer.id]: action.answer}
         case SET_QUESTION:
             return {...state, ...action.payload.answers}
         default:

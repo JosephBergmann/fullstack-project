@@ -13,7 +13,6 @@ class Api::AnswersController < ApplicationController
 
     def create
         @answer = Answer.new(poster_id: params["poster_id"], question_id: params["question_id"], body: params["body"])
-        debugger
         if @answer.save
             render json: @answer
         else
