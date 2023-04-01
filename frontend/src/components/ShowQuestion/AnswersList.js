@@ -1,6 +1,8 @@
 import Answer from "./Answer"
-import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
+import { createAnswer } from "../../store/answer"
 
 const AnswersList = () => {
     const {questionId} = useParams();
@@ -14,6 +16,13 @@ const AnswersList = () => {
     })
 
     debugger
+    const dispatch = useDispatch();
+    useEffect(() => {
+        // const unsubscribe = dispatch(createAnswer());
+        // return () => unsubscribe();
+        return dispatch(createAnswer())();
+    }, [dispatch])
+
     // const answerList = answers.map(answer => <Answer key={answer.id} answer={answer}/>)
 
     return (
