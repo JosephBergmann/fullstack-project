@@ -17,11 +17,11 @@ const AnswersList = () => {
 
     debugger
     const dispatch = useDispatch();
-    useEffect(() => {
-        // const unsubscribe = dispatch(createAnswer());
-        // return () => unsubscribe();
-        return dispatch(createAnswer())();
-    }, [dispatch])
+    // useEffect(() => {
+    //     // const unsubscribe = dispatch(createAnswer());
+    //     // return () => unsubscribe();
+    //     // return dispatch(createAnswer())();  
+    // }, [dispatch])
 
     // const answerList = answers.map(answer => <Answer key={answer.id} answer={answer}/>)
 
