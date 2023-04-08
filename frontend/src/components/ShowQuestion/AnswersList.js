@@ -25,6 +25,8 @@ const AnswersList = () => {
 
     // const answerList = answers.map(answer => <Answer key={answer.id} answer={answer}/>)
 
+
+    //keep trying to fix this
     return (
         <div className="answer-list">
             {answers.map((answer, idx, ele) => <Answer key={idx} answer={answer}/>)}
