@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_14_152233) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_12_054434) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_152233) do
     t.datetime "updated_at", null: false
     t.index ["poster_id"], name: "index_answers_on_poster_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "question_votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_question_votes_on_question_id"
+    t.index ["user_id"], name: "index_question_votes_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -47,5 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_152233) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users", column: "poster_id"
+  add_foreign_key "question_votes", "questions"
+  add_foreign_key "question_votes", "users"
   add_foreign_key "questions", "users", column: "poster_id"
 end
