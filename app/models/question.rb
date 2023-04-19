@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-    validates :title, :poster_id, :body, :score, presence: true
+    validates :title, :poster_id, :body, presence: true
     
     belongs_to :poster,
     primary_key: :id,
