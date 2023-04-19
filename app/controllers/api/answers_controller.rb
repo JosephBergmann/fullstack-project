@@ -29,7 +29,6 @@ class Api::AnswersController < ApplicationController
         end
         @answer.update!(answer_params)
         render json: @answer
-
     end
 
     def destroy
