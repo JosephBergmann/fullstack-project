@@ -9,7 +9,7 @@ class QuestionVotesController < ApplicationController
     end
     
     def destroy
-        @vote = current_user.questionVotes.find_by(params[:id]);
+        @vote = current_user.question_votes.find_by(params[:id]);
 
         if !@vote
             render json: {message: 'Unauthorized'}, status: :unauthorized
@@ -18,4 +18,14 @@ class QuestionVotesController < ApplicationController
         @vote.destroy!
         render :show
     end
+
+    def update
+        @vote = current_user.question_votes.find_by(params[:id]);
+
+        if !@vote
+            render json: {message: 'Unauthorized'}, status: :unauthorized
+            return
+        end
+
+        @vote.update!(params[:status])
 end
