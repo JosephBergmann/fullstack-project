@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
     resources :questions, only: [:index, :create, :show, :update, :destroy]
     resources :answers, only: [:show, :create, :update, :destroy]
-    resources :question_votes, only: [:create, :destroy]
+    resources :question_votes, only: [:create, :update, :destroy]
   end
   get '*path', to: "static_pages#frontend_index"
 end
