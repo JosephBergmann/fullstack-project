@@ -27,5 +27,6 @@ class QuestionVotesController < ApplicationController
             return
         end
 
-        @vote.update!(params[:status])
+        @vote.update!(status: params[:status])
+    end
 end
