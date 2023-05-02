@@ -37,7 +37,7 @@ class User < ApplicationRecord
     class_name: :Answer,
     dependent: :destroy
     
-    has_many :question_votes,
+    has_many :votes,
     primary_key: :id,
     foreign_key: :voter_id,
     class_name: :QuestionVote,
