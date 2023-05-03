@@ -1,4 +1,4 @@
-class QuestionVotesController < ApplicationController
+class VotesController < ApplicationController
     def create 
         @vote = QuestionVote.new(voter_id: current_user.id, question_id: params[:question_id], value: params[:status]);
         if @vote.save
