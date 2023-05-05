@@ -30,3 +30,10 @@ export const createVote = (vote) => async dispatch => {
         dispatch(addVote(data));
         return response;
 }
+
+const votesReducer = (oldState = {}, action) => {
+    let state = oldState;
+    switch(action.type){
+        
+    }
+}

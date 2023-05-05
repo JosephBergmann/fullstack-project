@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
     def create 
-        @vote = QuestionVote.new(voter_id: current_user.id, question_id: params[:question_id], value: params[:status]);
+        @vote = QuestionVote.new(voter_id: current_user.id, question_id: params[:question_id], value: params[:value]);
         if @vote.save
             render json: @vote
         else
