@@ -34,6 +34,13 @@ export const createVote = (vote) => async dispatch => {
 const votesReducer = (oldState = {}, action) => {
     let state = oldState;
     switch(action.type){
-        
+        case ADD_VOTE: 
+            return {...state};
+        case REMOVE_VOTE:
+            return {...state};
+        case CHANGE_VOTE:
+            return {...state};
+        default:
+            return state;
     }
 }
