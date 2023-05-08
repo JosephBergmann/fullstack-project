@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 function ListQuestion({question}){
-    const {title, body, author} = question
+    const {votes, title, body, author} = question
     console.log(question.question)
     return (
         <div className="list-item">
