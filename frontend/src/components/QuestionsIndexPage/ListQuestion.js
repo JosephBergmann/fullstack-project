@@ -5,6 +5,9 @@ function ListQuestion({question}){
     console.log(question.question)
     return (
         <div className="list-item">
+            <div className="votes">
+
+            </div>
             <NavLink to={`/questions/${question.question.id}`}>{question.question.title}</NavLink>
             <p>{question.question.body}</p>
         </div>
