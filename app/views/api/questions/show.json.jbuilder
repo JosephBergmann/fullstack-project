@@ -1,5 +1,5 @@
 json.question do
-    json.extract! @question, :id, :title, :body, :votes :created_at, :updated_at
+    json.extract! @question, :id, :title, :body, :votes, :created_at, :updated_at
     json.poster @question.poster.username
 end
 
