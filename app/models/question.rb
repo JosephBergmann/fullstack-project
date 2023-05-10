@@ -15,7 +15,7 @@ class Question < ApplicationRecord
     has_many :votes,
     primary_key: :id,
     foreign_key: :question_id,
-    class_name: :QuestionVote,
+    class_name: :Vote,
     dependent: :destroy
     
 end
