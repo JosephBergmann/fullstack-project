@@ -15,7 +15,6 @@ const AnswersList = () => {
         })
     })
 
-    debugger
     const dispatch = useDispatch();
     // useEffect(() => {
     //     const unsubscribe = dispatch(createAnswer());
