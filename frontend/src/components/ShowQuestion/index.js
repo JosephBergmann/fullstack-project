@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect } from "react"
 import * as questionActions from '../../store/question.js'
+import * as voteActions from '../../store/vote.js'
 import { useDispatch, useSelector } from "react-redux"
 import AnswersList from "./AnswersList.js"
 import WriteAnswer from "./WriteAnswer.js"
@@ -22,6 +23,17 @@ const ShowQuestion = () => {
         return <div>Loading</div>
     }
 
+    const handleUpVote = (e) => {
+        e.preventDefault();
+        const data = {
+            userId: user.id,
+            questionId: question.id,
+            status: true
+        }
+
+        dispatch(voteActions.createVote(data))
+    }
+
     return (
         // <h1>hi</h1>
         <>
@@ -31,7 +43,10 @@ const ShowQuestion = () => {
                 <div className="question-timestamp">Modified {question.updatedAt}</div>
             </div>
             <div className="question-body">
-                <div className="votes"></div>
+                <div className="votes">
+                    <button title="upvote" onClick={handleUpVote}></button>
+                    <button title="downvote" onClick={handleDownVote}></button>
+                </div>
                 <p>{question.body}</p>
             </div>
             <div>
