@@ -34,6 +34,19 @@ const ShowQuestion = () => {
         dispatch(voteActions.createVote(data))
     }
 
+    const handleDownVote = (e) => {
+        e.preventDefault();
+        const data = {
+            userId: user.id,
+            questionId: question.id,
+            status: false
+        }
+    }
+
+    const handleVoteChange = (status) => {
+        
+    }
+
     return (
         // <h1>hi</h1>
         <>
