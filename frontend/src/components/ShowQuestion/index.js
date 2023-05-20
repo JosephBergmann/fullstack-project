@@ -22,6 +22,7 @@ const ShowQuestion = () => {
     if (!question){
         return <div>Loading</div>
     }
+    
 
     const handleUpVote = (e) => {
         e.preventDefault();
@@ -44,7 +45,7 @@ const ShowQuestion = () => {
     }
 
     const handleVoteChange = (status) => {
-        
+
     }
 
     return (
