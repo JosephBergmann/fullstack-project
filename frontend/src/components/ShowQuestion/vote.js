@@ -1,6 +1,6 @@
 import { useState } from "react"
 import {useDispatch, useSelector } from "react-redux"
-import { createVote } from "../../store/vote.js"
+import { createVote, changeVote, deleteVote } from "../../store/vote.js"
 
 const vote = () => {
     const dispatch = useDispatch();
@@ -13,6 +13,12 @@ const vote = () => {
 
     const handleOptionChange = (e) => {
         e.preventDefault();
+
+        if (e.target.value === currentVote){
+            setCurrentVote(null);
+            dispatch()
+        }
+
 
     }
 

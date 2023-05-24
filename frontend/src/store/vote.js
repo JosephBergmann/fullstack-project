@@ -20,15 +20,38 @@ const changeVote = (payload) => ({
 })
 
 export const createVote = (vote) => async dispatch => {
-        const {questionId, answerId, posterId} = vote;
+        const {questionId, answerId, posterId, value} = vote;
         const response = await csrfFetch(`/api/votes`,
         {
             method: `POST`,
-        body: JSON.stringify({questionId, answerId, posterId})
+            body: JSON.stringify({questionId, answerId, posterId, value})
         })
-    const data = await response.json();;
+    const data = await response.json();
         dispatch(addVote(data));
         return response;
+}
+
+export const updateVote = (vote) => async dispatch => {
+    const {questionId, answerId, posterId, value} = vote;
+    const response = await csrfFetch(`/api/votes`,
+    {
+        method: `UPDATE`,
+        body: JSON.stringify({questionId, answerId, posterId, value})
+    })
+
+    const data = await response.json();
+    dispatch(changeVote(data))
+    return response;
+}
+
+export const deleteVote = (voteId) => async dispatch => {
+    const response = await csrfFetch(`/api/votes`,
+    {
+        method: `DELETE`,
+        body: JSON.stringify(voteId)
+    }
+    )
+    const data = await response.json();
 }
 
 const votesReducer = (oldState = {}, action) => {
