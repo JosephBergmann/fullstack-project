@@ -2,7 +2,6 @@ class Api::QuestionsController < ApplicationController
     wrap_parameters include: Question.attribute_names
     
     def index
-        # @questions = Question.includes(:votes)
         @questions = Question.all;
         render :index
     end
