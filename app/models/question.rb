@@ -18,8 +18,8 @@ class Question < ApplicationRecord
     class_name: :Vote,
     dependent: :destroy
 
-    # def score
-    #     score = votes.sum(0){|vote| vote.value == true ? 1 : -1}
-    # end
+    def score
+        score = votes.sum(0){|vote| vote.value == true ? 1 : -1}
+    end
     
 end
