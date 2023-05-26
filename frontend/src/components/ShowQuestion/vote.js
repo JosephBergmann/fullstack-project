@@ -1,30 +1,35 @@
 import { useState } from "react"
 import {useDispatch, useSelector } from "react-redux"
-import { createVote, changeVote, deleteVote } from "../../store/vote.js"
+import { createVote, updateVote, deleteVote } from "../../store/vote.js"
 
-const vote = () => {
+const vote = (questionId) => {
     const dispatch = useDispatch();
     const [currentVote, setCurrentVote] = useState(null);
 
     const options = [
-        {id: 1, label: 'Upvote'},
-        {id: 2, label: 'Downvote'}
+        {id: 1, label: 'Upvote', value: true},
+        {id: 2, label: 'Downvote', value: false}
     ]
 
     const handleOptionChange = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
-        if (e.target.value === currentVote){
+        if (e === currentVote){
             setCurrentVote(null);
-            dispatch()
+            dispatch(deleteVote(questionId.questionId))
         }
 
-
+        setCurrentVote(e)
     }
 
     return (
         <div>
-            <label type="radio" name="votes" value={null} checked={currentVote===null} onChange={handleVoteChange()}></label>
+            <label type="radio" name="votes" value={true} checked={currentVote===true} onChange={handleVoteChange(true)}>
+                Upvote
+            </label>
+            <label type="radio" name="votes" value={false} checked={currentVote === false} onChange={(handleVoteChange(false))}>
+                Downvote
+            </label>
         </div>
     )
 }

@@ -78,6 +78,8 @@ const questionsReducer = (oldState = {}, action) => {
             // This seems like it resolves the issue where a duplicate question appears
             // on the show page initially. Consider revisiting
             return {...state}
+        // case ADD_VOTE:
+            // const {}
         default:
             return state;
     }
