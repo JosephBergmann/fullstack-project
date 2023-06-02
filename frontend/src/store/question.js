@@ -4,6 +4,7 @@ export const SET_QUESTION = 'question/RECEIVE_QUESTION';
 const SET_QUESTIONS = 'question/SET_QUESTIONS';
 const REMOVE_QUESTION = 'question/REMOVE_QUESTION';
 const ADD_QUESTION = 'question/ADD_QUESTION';
+const ADD_VOTE = 'vote/SET_VOTE';
 
 const setQuestion = (payload) => ({
     type: SET_QUESTION,
