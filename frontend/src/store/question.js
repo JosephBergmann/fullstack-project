@@ -5,6 +5,7 @@ const SET_QUESTIONS = 'question/SET_QUESTIONS';
 const REMOVE_QUESTION = 'question/REMOVE_QUESTION';
 const ADD_QUESTION = 'question/ADD_QUESTION';
 const ADD_VOTE = 'vote/SET_VOTE';
+const REMOVE_VOTE = 'vote/REMOVE_VOTE';
 
 const setQuestion = (payload) => ({
     type: SET_QUESTION,
@@ -65,6 +66,7 @@ export const createQuestion = (question) => async dispatch => {
 
 const questionsReducer = (oldState = {}, action) => {
     let state = oldState
+    // let newState;
     switch(action.type){
         case SET_QUESTIONS:
             return {...state, ...action.questions};
@@ -72,7 +74,7 @@ const questionsReducer = (oldState = {}, action) => {
             // state.question = action.question;
             return {...state, [action.payload.question.id]: action.payload.question}
         case REMOVE_QUESTION:
-            const {[action.questionId]: _remove, ...newState } = state;
+            let {[action.questionId]: _remove, ...newState } = state;
             return newState;
         case ADD_QUESTION:
             // return {...state, [action.question.id]: action.question}
@@ -81,6 +83,9 @@ const questionsReducer = (oldState = {}, action) => {
             return {...state}
         case ADD_VOTE:
             return { ...state, [action.payload.vote.userId]: action.payload.vote}
+        case REMOVE_VOTE:
+            const {[action.voteId]: _rem, ...theState } = state;
+            return theState;
         default:
             return state;
     }
