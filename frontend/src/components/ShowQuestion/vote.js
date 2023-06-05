@@ -16,7 +16,7 @@ const vote = (questionId) => {
         console.log(currentVote)
         if (e === currentVote){
             setCurrentVote(!e);
-            // dispatch(deleteVote(questionId.questionId))
+            dispatch(deleteVote(questionId.questionId))
         }
 
         setCurrentVote(e)
