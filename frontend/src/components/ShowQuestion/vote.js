@@ -5,10 +5,11 @@ import { createVote, updateVote, deleteVote } from "../../store/vote.js"
 const Vote = (questionId) => {
     const dispatch = useDispatch();
 
-    // const votes = useSelector(state => {return state.questionsReducer[questionId].votes})
-    // const user = useSelector(state => {return state.sessionsReducer.user})
+    const votes = useSelector(state => {return state.questionsReducer[questionId.questionId]})
+    const user = useSelector(state => {return state.sessionsReducer.user})
+    console.log(votes)
     // console.log(user);
-    // console.log(!!votes[user.id])
+
     const [currentVote, setCurrentVote] = useState(true);
 
     const options = [
@@ -17,11 +18,15 @@ const Vote = (questionId) => {
     ]
 
     const handleVoteChange = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         console.log(currentVote)
         if (e === currentVote){
             setCurrentVote(null);
-            dispatch(deleteVote(questionId.questionId))
+            dispatch(deleteVote(votes[user.id].id))
+        } else {
+            setCurrentVote(e.target.value)
+            debugger
+            dispatch(createVote({questionId: questionId.questionId, userId: user.id, value: currentVote}))
         }
 
         setCurrentVote(e)

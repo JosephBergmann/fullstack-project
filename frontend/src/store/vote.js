@@ -22,11 +22,11 @@ const changeVote = (payload) => ({
 
 export const createVote = (vote) => async dispatch => {
     debugger
-        const {questionId, answerId, posterId, value} = vote;
+        const {questionId, answerId, userId, value} = vote;
         const response = await csrfFetch(`/api/votes`,
         {
             method: `POST`,
-            body: JSON.stringify({questionId, answerId, posterId, value})
+            body: JSON.stringify({questionId, answerId, userId, value})
         })
     const data = await response.json();
         dispatch(addVote(data));
