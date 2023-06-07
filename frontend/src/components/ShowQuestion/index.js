@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import AnswersList from "./AnswersList.js"
 import WriteAnswer from "./WriteAnswer.js"
 import './ShowQuestion.css';
+import Vote from "./Vote.js";
 
 const ShowQuestion = () => {
     const dispatch = useDispatch();
@@ -57,10 +58,11 @@ const ShowQuestion = () => {
                 <div className="question-timestamp">Modified {question.updatedAt}</div>
             </div>
             <div className="question-body">
-                <div className="votes">
+                {/* <div className="votes">
                     <button title="upvote" onClick={handleUpVote}></button>
                     <button title="downvote" onClick={handleDownVote}></button>
-                </div>
+                </div> */}
+
                 <p>{question.body}</p>
             </div>
             <div>

@@ -2,8 +2,13 @@ import { useState } from "react"
 import {useDispatch, useSelector } from "react-redux"
 import { createVote, updateVote, deleteVote } from "../../store/vote.js"
 
-const vote = (questionId) => {
+const Vote = (questionId) => {
     const dispatch = useDispatch();
+
+    // const votes = useSelector(state => {return state.questionsReducer[questionId].votes})
+    // const user = useSelector(state => {return state.sessionsReducer.user})
+    // console.log(user);
+    // console.log(!!votes[user.id])
     const [currentVote, setCurrentVote] = useState(true);
 
     const options = [
@@ -11,7 +16,7 @@ const vote = (questionId) => {
         {id: 2, label: 'Downvote', value: false}
     ]
 
-    const handleOptionChange = (e) => {
+    const handleVoteChange = (e) => {
         // e.preventDefault();
         console.log(currentVote)
         if (e === currentVote){
@@ -33,3 +38,5 @@ const vote = (questionId) => {
         </div>
     )
 }
+
+export default Vote;

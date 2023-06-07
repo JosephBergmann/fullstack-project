@@ -1,5 +1,4 @@
 const Answer = ({answer}) => {
-    console.log(answer)
     return (
         <div className="answer">
             <h3>{answer.poster}</h3>
