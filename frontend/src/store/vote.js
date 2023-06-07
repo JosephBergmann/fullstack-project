@@ -3,6 +3,7 @@ import csrfFetch from "./csrf";
 const ADD_VOTE = 'vote/SET_VOTE';
 const REMOVE_VOTE = 'vote/REMOVE_VOTE';
 const CHANGE_VOTE = 'vote/CHANGE_VOTE';
+const RECEIVE_VOTES = 'vote/RECEIVE_VOTES';
 
 const addVote = (payload) => ({
     type: ADD_VOTE,
@@ -59,6 +60,8 @@ export const deleteVote = (voteId) => async dispatch => {
 const votesReducer = (oldState = {}, action) => {
     let state = oldState;
     switch(action.type){
+        case RECEIVE_VOTES:
+            return {...state}
         case ADD_VOTE: 
             return {...state};
         case REMOVE_VOTE:

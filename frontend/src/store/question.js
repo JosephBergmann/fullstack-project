@@ -82,7 +82,9 @@ const questionsReducer = (oldState = {}, action) => {
             // on the show page initially. Consider revisiting
             return {...state}
         case ADD_VOTE:
-            return { ...state, [action.payload.vote.userId]: action.payload.vote}
+            return {...state}
+            // let newState = {...state, [action.payload.vote.questionId.score]: +1 }
+            // return { ...state, [action.payload.vote.userId]: action.payload.vote}
         case REMOVE_VOTE:
             const {[action.voteId]: _rem, ...theState } = state;
             return theState;

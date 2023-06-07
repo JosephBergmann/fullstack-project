@@ -11,3 +11,11 @@ json.answers do
         end
     end
 end
+
+json.votes do
+    @question.votes.each do |vote|
+        json.set! vote.user_id do
+            json.extract! vote
+        end
+    end
+end
