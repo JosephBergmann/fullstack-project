@@ -62,7 +62,7 @@ const ShowQuestion = () => {
                     <button title="upvote" onClick={handleUpVote}></button>
                     <button title="downvote" onClick={handleDownVote}></button>
                 </div> */}
-
+                <Vote />
                 <p>{question.body}</p>
             </div>
             <div>

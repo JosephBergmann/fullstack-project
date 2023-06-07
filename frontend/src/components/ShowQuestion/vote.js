@@ -20,7 +20,7 @@ const Vote = (questionId) => {
         // e.preventDefault();
         console.log(currentVote)
         if (e === currentVote){
-            setCurrentVote(!e);
+            setCurrentVote(null);
             dispatch(deleteVote(questionId.questionId))
         }
 
@@ -29,10 +29,10 @@ const Vote = (questionId) => {
 
     return (
         <div>
-            <label type="button" name="votes" value={true} checked={currentVote===true} onChange={handleVoteChange(true)}>
+            <label type="button" name="votes" value={true} checked={currentVote}onClick={handleVoteChange}>
                 Upvote
             </label>
-            <label type="button" name="votes" value={false} checked={currentVote === false} onChange={(handleVoteChange(false))}>
+            <label type="button" name="votes" value={false} checked={currentVote} onClick={(handleVoteChange)}>
                 Downvote
             </label>
         </div>
