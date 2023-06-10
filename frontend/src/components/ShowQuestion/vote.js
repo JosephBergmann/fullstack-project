@@ -5,7 +5,7 @@ import { createVote, updateVote, deleteVote } from "../../store/vote.js"
 const Vote = (questionId) => {
     const dispatch = useDispatch();
 
-    const votes = useSelector(state => {return state.questionsReducer[questionId.questionId]})
+    const votes = useSelector(state => {return state.questionsReducer[questionId.questionId].votes})
     const user = useSelector(state => {return state.sessionsReducer.user})
     console.log(votes)
     // console.log(user);
