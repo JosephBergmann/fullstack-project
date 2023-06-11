@@ -25,7 +25,6 @@ const Vote = (questionId) => {
             dispatch(deleteVote(votes[user.id].id))
         } else {
             setCurrentVote(e.target.value)
-            debugger
             dispatch(createVote({questionId: questionId.questionId, userId: user.id, value: currentVote}))
         }
 
