@@ -1,19 +1,34 @@
 class Vote < ApplicationRecord
-    validates :user_id, :question_id, :value, presence: true
+    validates :user_id, :value, presence: true
+    validate :question_or_answer
+    validate :dupe?
 
-    has_one :user,
+    belongs_to :user,
     primary_key: :id,
     foreign_key: :user_id,
     class_name: :User
 
-    has_one :question, optional: true, 
+    belongs_to :question, optional: true, 
     primary_key: :id,
     foreign_key: :question_id,
     class_name: :Question
 
-    has_one :answer, optional: true,
+    belongs_to :answer, optional: true,
     primary_key: :id,
     foreign_key: :answer_id,
     class_name: :Answer
     
+    def question_or_answer
+        if !question_id && !answer_id
+            errors.add(:base, messsage: "there must be a question or answer attached to this vote")
+        elsif question_id && answer_id
+            errors.add(:base, message: "vote cannot be both to a question and an answer")
+        end
+    end
+
+    def dupe?
+        if Vote.exists?(user_id: user_id, question_id ? question_id : answer_id)
+            errors.add(:base, message: "vote already exists on this item for this user")
+        end
+    end
 end
