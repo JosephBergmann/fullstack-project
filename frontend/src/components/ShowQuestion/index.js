@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import AnswersList from "./AnswersList.js"
 import WriteAnswer from "./WriteAnswer.js"
 import './ShowQuestion.css';
-import Vote from "./Vote.js";
+import Vote from "./vote.js"
 
 const ShowQuestion = () => {
     const dispatch = useDispatch();

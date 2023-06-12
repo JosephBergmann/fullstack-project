@@ -19,6 +19,7 @@ class Api::QuestionsController < ApplicationController
     def show
         @question = Question.find_by(id: params[:id])
         if @question
+            puts @question.votes[4].user_id
             render :show
         else
             render json: {errors: 'No question exists with that id'}
