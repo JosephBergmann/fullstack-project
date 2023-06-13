@@ -39,8 +39,8 @@ class User < ApplicationRecord
     
     has_many :votes,
     primary_key: :id,
-    foreign_key: :voter_id,
-    class_name: :QuestionVote,
+    foreign_key: :user_id,
+    class_name: :Vote,
     dependent: :destroy
     
     private
