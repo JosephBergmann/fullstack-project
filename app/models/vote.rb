@@ -28,7 +28,15 @@ class Vote < ApplicationRecord
 
     def dupe?
         # if Vote.exists?(user_id: user_id, (question_id ? {question_id: question_id} : {answer_id: answer_id}))
-        #     errors.add(:base, message: "vote already exists on this item for this user")
-        # end
+        if question_id
+            if Vote.exists?(user_id: user_id, question_id: question_id)
+                errors.add(:base, message: "vote already exists on this item for this user")
+            end
+        end
+        if answer_id
+            if Vote.exists?(user_id: user_id, answer_id: answer_id)
+                errors.add(:base, message: "vote already exists on this item for this user")
+            end
+        end
     end
 end
