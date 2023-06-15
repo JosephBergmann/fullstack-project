@@ -23,7 +23,7 @@ const Vote = () => {
     const handleVoteChange = (e) => {
         e.preventDefault();
         console.log(currentVote)
-        if (e.target.value === currentVote){
+        if (currentVote !== null && e.target.value === currentVote){
             setCurrentVote(null);
             console.log(votes[user.id])
             dispatch(deleteVote(votes[user.id].id))

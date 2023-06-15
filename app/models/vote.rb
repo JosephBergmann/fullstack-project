@@ -1,6 +1,6 @@
 class Vote < ApplicationRecord
     validates :user_id, :value, presence: true
-    validate :question_or_answer
+    # validate :question_or_answer
     validate :dupe?
 
     belongs_to :user,

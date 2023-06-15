@@ -10,7 +10,6 @@ class Api::VotesController < ApplicationController
     end
     
     def destroy
-        debugger
         @vote = current_user.question_votes.find_by(id: params[:id])
 
         if !@vote

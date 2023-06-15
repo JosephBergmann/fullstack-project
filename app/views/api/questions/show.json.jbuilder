@@ -14,7 +14,7 @@ end
 
 json.votes do
     @question.votes.each do |vote|
-        json.set! vote.user_id do
+        json.set! vote.id do
             json.extract! vote
         end
     end
