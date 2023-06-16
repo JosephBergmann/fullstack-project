@@ -20,7 +20,6 @@ const WriteAnswer = (questionId) => {
             questionId: parseInt(questionId.questionId),
             body
         }
-
         dispatch(createAnswer(data));
     }
     return(
