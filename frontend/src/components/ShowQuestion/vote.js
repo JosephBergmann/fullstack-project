@@ -22,8 +22,7 @@ const Vote = () => {
 
     console.log(currentVote)
     const handleVoteChange = (e) => {
-        console.log(e.target.value)
-        debugger
+        console.log(e.target)
         e.preventDefault();
         console.log(!!currentVote)
         if (!!currentVote && e.target.value === currentVote){
@@ -32,7 +31,9 @@ const Vote = () => {
             dispatch(deleteVote(userVotes[0].id))
             // dispatch(deleteVote(votes[user.id].id)) needs to be updated
         } else {
-            setCurrentVote(e.target.value)
+            let vote = e.target.getAttribute("value");
+            setCurrentVote(vote)
+            debugger
             dispatch(createVote({questionId: questionId, userId: user.id, value: currentVote}))
         }
 
@@ -41,10 +42,10 @@ const Vote = () => {
 
     return (
         <div>
-            <label type="button" name="votes" value={true} checked={currentVote} onClick={handleVoteChange}>
+            <label type="button" name="upvote" value={true} checked={currentVote} onClick={handleVoteChange}>
                 Upvote
             </label>
-            <label type="button" name="votes" value={false} checked={currentVote} onClick={(handleVoteChange)}>
+            <label type="button" name="downvote" value={false} checked={currentVote} onClick={(handleVoteChange)}>
                 Downvote
             </label>
         </div>
