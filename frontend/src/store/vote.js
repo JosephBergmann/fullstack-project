@@ -47,10 +47,9 @@ export const updateVote = (vote) => async dispatch => {
 }
 
 export const deleteVote = (voteId) => async dispatch => {
-    const response = await csrfFetch(`/api/votes`,
+    const response = await csrfFetch(`/api/votes/${voteId}`,
     {
         method: `DELETE`,
-        body: JSON.stringify(voteId)
     }
     )
     const data = await response.json();

@@ -10,14 +10,14 @@ class Api::VotesController < ApplicationController
     end
     
     def destroy
-        @vote = current_user.question_votes.find_by(id: params[:id])
+        @vote = current_user.votes.find_by(id: params[:id])
 
         if !@vote
             render json: {message: 'Unauthorized'}, status: :unauthorized
             return
         end
         @vote.destroy!
-        render :show
+        render json: {message: 'Success'}, status: :ok
         return
     end
 

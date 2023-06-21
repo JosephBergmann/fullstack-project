@@ -9,12 +9,12 @@ const Vote = () => {
     // console.log(questionId)
     const votes = useSelector(state => {return state.questionsReducer[questionId].votes});
     const user = useSelector(state => {return state.sessionsReducer.user});
-    const userVotes = votes.filter(vote => vote.userId === user.id); 
-    console.log(votes)
-    console.log(user.id);
+    const userVotes = votes.filter(vote => vote.user_id === user.id); 
+    // console.log(userVotes[0].value)
+    // console.log(user.id)
 
-    const [currentVote, setCurrentVote] = useState(userVotes[0]);
-    console.log(!!currentVote);
+    const [currentVote, setCurrentVote] = useState(userVotes[0].value);
+    // console.log(!!currentVote);
     const options = [
         {id: 1, label: 'Upvote', value: true},
         {id: 2, label: 'Downvote', value: false}
@@ -22,10 +22,9 @@ const Vote = () => {
 
     console.log(currentVote)
     const handleVoteChange = (e) => {
-        console.log(e.target)
+        // console.log(e.target)
         e.preventDefault();
-        console.log(!!currentVote)
-        if (!!currentVote && e.target.value === currentVote){
+        if (e.target.getAttribute("value") === currentVote){
             setCurrentVote(null);
             console.log(votes[user.id])
             dispatch(deleteVote(userVotes[0].id))
