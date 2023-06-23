@@ -31,7 +31,8 @@ class Api::QuestionsController < ApplicationController
             render json: {message: 'Unauthorized'}, status: :unauthorized
         end
         @question.update!(question_params)
-        render json: @question
+        # render json: @question
+        render :show
     end
 
     def destroy
