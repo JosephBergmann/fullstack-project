@@ -32,13 +32,17 @@ export const login = ({email, password}) => async dispatch => {
 }
 
 export const logout = () => async dispatch => {
-    const response = await csrfFetch('/api/session', {
-        method: 'DELETE'
-    })
-
+    try {
+        const response = await csrfFetch('/api/session', {
+            method: 'DELETE'
+        })
+    } catch (e)
+    {
+        console.log('please log in');
+    }
     storeCurrentUser(null);
     dispatch(removeCurrentUser());
-    return response;
+    return 'success';
 }
 
 export const signup = (user) => async (dispatch) => {
