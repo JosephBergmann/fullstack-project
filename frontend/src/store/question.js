@@ -66,7 +66,7 @@ export const createQuestion = (question) => async dispatch => {
 
 const questionsReducer = (oldState = {}, action) => {
     let state = oldState
-    // let newState;
+    let newState;
     switch(action.type){
         case SET_QUESTIONS:
             return {...state, ...action.questions};
@@ -82,10 +82,14 @@ const questionsReducer = (oldState = {}, action) => {
             // on the show page initially. Consider revisiting
             return {...state}
         case ADD_VOTE:
+            debugger
             return {...state}
-            // let newState = {...state, [action.payload.vote.questionId.score]: +1 }
+            let updatedScore = action.payload.vote === 'true' ? 1 : -1
+            newState = {...state, [action.payload.vote.questionId.score]: action.payload.vote.questionId.score + updatedScore }
             // return { ...state, [action.payload.vote.userId]: action.payload.vote}
         case REMOVE_VOTE:
+            let oldScore = oldState.questionsReducer.votes
+            newState = {...state}
             const {[action.voteId]: _rem, ...theState } = state;
             return theState;
         default:

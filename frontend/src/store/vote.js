@@ -10,9 +10,10 @@ const addVote = (payload) => ({
     payload
 })
 
-const removeVote = (voteId) => ({
+const removeVote = (voteId, objId) => ({
     type: REMOVE_VOTE,
-    voteId
+    voteId,
+    objId
 })
 
 const changeVote = (payload) => ({
@@ -54,18 +55,18 @@ export const deleteVote = (voteId) => async dispatch => {
     const data = await response.json();
 }
 
-const votesReducer = (oldState = {}, action) => {
-    let state = oldState;
-    switch(action.type){
-        case RECEIVE_VOTES:
-            return {...state}
-        case ADD_VOTE: 
-            return {...state};
-        case REMOVE_VOTE:
-            return {...state};
-        case CHANGE_VOTE:
-            return {...state};
-        default:
-            return state;
-    }
-}
+// const votesReducer = (oldState = {}, action) => {
+//     let state = oldState;
+//     switch(action.type){
+//         case RECEIVE_VOTES:
+//             return {...state}
+//         case ADD_VOTE: 
+//             return {...state};
+//         case REMOVE_VOTE:
+//             return {...state};
+//         case CHANGE_VOTE:
+//             return {...state};
+//         default:
+//             return state;
+//     }
+// }

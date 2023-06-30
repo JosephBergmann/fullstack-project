@@ -13,7 +13,7 @@ const Vote = () => {
     // console.log(userVotes[0].value)
     // console.log(user.id)
 
-    const [currentVote, setCurrentVote] = useState(userVotes[0].value);
+    const [currentVote, setCurrentVote] = useState(userVotes[0]?.value);
     // console.log(!!currentVote);
     const options = [
         {id: 1, label: 'Upvote', value: true},
@@ -22,12 +22,13 @@ const Vote = () => {
 
     console.log(currentVote)
     const handleVoteChange = (e) => {
+        debugger
         // console.log(e.target)
         e.preventDefault();
-        if (e.target.getAttribute("value") === currentVote){
+        if (e.target.value === currentVote){
             setCurrentVote(null);
             console.log(votes[user.id])
-            dispatch(deleteVote(userVotes[0].id))
+            dispatch(deleteVote(userVotes[0].id, questionId))
             // dispatch(deleteVote(votes[user.id].id)) needs to be updated
         } else {
             let vote = e.target.getAttribute("value");
@@ -41,12 +42,12 @@ const Vote = () => {
 
     return (
         <div>
-            <label type="button" name="upvote" value={true} checked={currentVote} onClick={handleVoteChange}>
+            <button className={currentVote ==='true' ? "buttonChecked" : "buttonUnchecked"} name="upvote" value={true} checked={currentVote === 'true'} onClick={handleVoteChange}>
                 Upvote
-            </label>
-            <label type="button" name="downvote" value={false} checked={currentVote} onClick={(handleVoteChange)}>
+            </button>
+            <button className={currentVote === 'false' ?  "buttonChecked" : "buttonUnchecked"}name="downvote" value={false} checked={currentVote === 'false'} onClick={(handleVoteChange)}>
                 Downvote
-            </label>
+            </button>
         </div>
     )
 }
