@@ -22,7 +22,6 @@ const Vote = () => {
 
     console.log(currentVote)
     const handleVoteChange = (e) => {
-        debugger
         // console.log(e.target)
         e.preventDefault();
         if (e.target.value === currentVote){
