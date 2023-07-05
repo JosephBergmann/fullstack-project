@@ -32,7 +32,6 @@ const Vote = () => {
         } else {
             let vote = e.target.getAttribute("value");
             setCurrentVote(vote)
-            debugger
             dispatch(createVote({questionId: questionId, userId: user.id, value: currentVote}))
         }
 
