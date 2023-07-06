@@ -22,7 +22,6 @@ const Vote = () => {
 
     console.log(currentVote)
     const handleVoteChange = (e) => {
-        // console.log(e.target)
         e.preventDefault();
         if (e.target.value === currentVote){
             setCurrentVote(null);
@@ -34,8 +33,6 @@ const Vote = () => {
             setCurrentVote(vote)
             dispatch(createVote({questionId: questionId, userId: user.id, value: currentVote}))
         }
-
-        // setCurrentVote(e)
     }
 
     return (
