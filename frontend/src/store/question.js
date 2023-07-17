@@ -65,14 +65,22 @@ export const createQuestion = (question) => async dispatch => {
 }
 
 const questionsReducer = (oldState = {}, action) => {
-    let state = oldState
-    let newState;
+    let state = {...oldState}
+    // let newState = {...oldState};
     switch(action.type){
         case SET_QUESTIONS:
-            return {...state, ...action.questions};
+            debugger
+            action.questions.forEach(question => {
+                // debugger
+                // console.log(question.question.id);
+                state = {...state, [question?.question.id]: question.question}
+                // state = {...state, [question.id]: question}
+            });
+            return state
         case SET_QUESTION:
             // state.question = action.question;
             return {...state, [action.payload.question.id]: action.payload.question}
+            // return {...state, ...action.payload.question}
         case REMOVE_QUESTION:
             let {[action.questionId]: _remove, ...newState } = state;
             return newState;

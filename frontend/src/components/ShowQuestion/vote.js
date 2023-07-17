@@ -9,7 +9,7 @@ const Vote = () => {
     // console.log(questionId)
     const votes = useSelector(state => {return state.questionsReducer[questionId].votes});
     const user = useSelector(state => {return state.sessionsReducer.user});
-    const userVotes = votes.filter(vote => vote.user_id === user.id); 
+    const userVotes = votes.filter(vote => vote.user_id === user?.id); 
     // console.log(userVotes[0].value)
     // console.log(user.id)
 
