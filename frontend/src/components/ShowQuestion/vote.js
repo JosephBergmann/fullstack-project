@@ -2,6 +2,7 @@ import { useState } from "react"
 import {useDispatch, useSelector } from "react-redux"
 import { createVote, updateVote, deleteVote } from "../../store/vote.js"
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min.js";
 
 const Vote = () => {
     const dispatch = useDispatch();
@@ -9,7 +10,7 @@ const Vote = () => {
     // console.log(questionId)
     const votes = useSelector(state => {return state.questionsReducer[questionId].votes});
     const user = useSelector(state => {return state.sessionsReducer.user});
-    const userVotes = votes.filter(vote => vote.user_id === user?.id); 
+    const userVotes = votes?.filter(vote => vote.user_id === user?.id);
     // console.log(userVotes[0].value)
     // console.log(user.id)
 
@@ -22,6 +23,7 @@ const Vote = () => {
 
     console.log(currentVote)
     const handleVoteChange = (e) => {
+        // if (!user);
         e.preventDefault();
         if (e.target.value === currentVote){
             setCurrentVote(null);
