@@ -90,7 +90,6 @@ const questionsReducer = (oldState = {}, action) => {
             // on the show page initially. Consider revisiting
             return {...state}
         case ADD_VOTE:
-            debugger
             return {...state}
             let updatedScore = action.payload.vote === 'true' ? 1 : -1
             newState = {...state, [action.payload.vote.questionId.score]: action.payload.vote.questionId.score + updatedScore }
