@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min.js";
 
 const Vote = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { questionId } = useParams();
     // console.log(questionId)
     const votes = useSelector(state => {return state.questionsReducer[questionId].votes});
@@ -23,7 +24,7 @@ const Vote = () => {
 
     console.log(currentVote)
     const handleVoteChange = (e) => {
-        // if (!user);
+        if (!user) history.push('/login');
         e.preventDefault();
         if (e.target.value === currentVote){
             setCurrentVote(null);
