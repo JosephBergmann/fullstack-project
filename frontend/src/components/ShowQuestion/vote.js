@@ -8,15 +8,13 @@ const Vote = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { questionId } = useParams();
-    // console.log(questionId)
+
     const votes = useSelector(state => {return state.questionsReducer[questionId].votes});
     const user = useSelector(state => {return state.sessionsReducer.user});
     const userVotes = votes?.filter(vote => vote.user_id === user?.id);
-    // console.log(userVotes[0].value)
-    // console.log(user.id)
 
     const [currentVote, setCurrentVote] = useState(userVotes[0]?.value);
-    // console.log(!!currentVote);
+
     const options = [
         {id: 1, label: 'Upvote', value: true},
         {id: 2, label: 'Downvote', value: false}
