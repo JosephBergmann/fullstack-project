@@ -13,7 +13,7 @@ const Vote = () => {
     const user = useSelector(state => {return state.sessionsReducer.user});
     const userVotes = votes?.filter(vote => vote.user_id === user?.id);
 
-    const [currentVote, setCurrentVote] = useState( userVotes ? userVotes[0]?.value : null);
+    const [currentVote, setCurrentVote] = useState(userVotes ? userVotes[0]?.value : null);
 
     const options = [
         {id: 1, label: 'Upvote', value: true},
@@ -22,17 +22,19 @@ const Vote = () => {
 
     console.log(currentVote)
     const handleVoteChange = (e) => {
-        if (!user) history.push('/login');
-        e.preventDefault();
-        if (e.target.value === currentVote){
-            setCurrentVote(null);
-            console.log(votes[user.id])
-            dispatch(deleteVote(userVotes[0].id, questionId))
-            // dispatch(deleteVote(votes[user.id].id)) needs to be updated
-        } else {
-            let vote = e.target.getAttribute("value");
-            setCurrentVote(vote)
-            dispatch(createVote({questionId: questionId, userId: user.id, value: currentVote}))
+        if (!user) history.push('/login')
+        else {
+            e.preventDefault();
+            if (e.target.value === currentVote){
+                setCurrentVote(null);
+                console.log(votes[user.id])
+                dispatch(deleteVote(userVotes[0].id, questionId))
+                // dispatch(deleteVote(votes[user.id].id)) needs to be updated
+            } else {
+                let vote = e.target.getAttribute("value");
+                setCurrentVote(vote)
+                dispatch(createVote({questionId: questionId, userId: user.id, value: currentVote}))
+            }
         }
     }
 
