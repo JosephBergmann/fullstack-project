@@ -13,7 +13,7 @@ const Vote = () => {
     const user = useSelector(state => {return state.sessionsReducer.user});
     const userVotes = votes?.filter(vote => vote.user_id === user?.id);
 
-    const [currentVote, setCurrentVote] = useState(userVotes[0]?.value);
+    const [currentVote, setCurrentVote] = useState( userVotes ? userVotes[0]?.value : null);
 
     const options = [
         {id: 1, label: 'Upvote', value: true},
