@@ -28,6 +28,7 @@ const Vote = () => {
             if (e.target.value === currentVote){
                 setCurrentVote(null);
                 console.log(votes[user.id])
+                debugger
                 dispatch(deleteVote(userVotes[0].id, questionId))
                 // dispatch(deleteVote(votes[user.id].id)) needs to be updated
             } else {

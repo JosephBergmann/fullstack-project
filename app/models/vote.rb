@@ -1,7 +1,7 @@
 class Vote < ApplicationRecord
     validates :user_id, :value, presence: true
     # validate :question_or_answer
-    # validate :dupe?
+    validate :dupe?
 
     belongs_to :user,
     primary_key: :id,
@@ -28,13 +28,12 @@ class Vote < ApplicationRecord
 
     def dupe?
         # if Vote.exists?(user_id: user_id, (question_id ? {question_id: question_id} : {answer_id: answer_id}))
-        if self.question_id
+        if question_answer
             if Vote.exists?(user_id: user_id, question_id: question_id)
                 errors.add(:base, message: "vote already exists on this item for this user")
             end
-        end
-        if self.answer_id
-            if Vote.exists?(user_id: user_id, answer_id: answer_id)
+        else
+            if Vote.exists?(user_id: user_id, question_id: question_id)
                 errors.add(:base, message: "vote already exists on this item for this user")
             end
         end
