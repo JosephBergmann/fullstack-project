@@ -1,7 +1,9 @@
 class Api::VotesController < ApplicationController
+    
+    before_action :require_logged_in, only: [:create, :update, :destroy] 
+
     def create 
-        @vote = Vote.new(user_id: current_user.id, question_id: params[:question_id], value: params[:value])
-        debugger
+        @vote = Vote.new(user_id: current_user.id, question_id: params[:question_id], value: params[:value], question_answer: params[:question_comment])
         if @vote.save
             render json: @vote
         else

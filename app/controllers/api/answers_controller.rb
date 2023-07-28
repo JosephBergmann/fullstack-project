@@ -1,7 +1,7 @@
 class Api::AnswersController < ApplicationController
     # before_action :snake_case_params
     wrap_parameters include: Answer.attribute_names
-    # before_action :require_logged_in, only: [:create, :update] 
+    before_action :require_logged_in, only: [:create, :update, :destroy] 
 
     def index
         @answers = Answer.all

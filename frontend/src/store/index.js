@@ -4,11 +4,13 @@ import sessionsReducer from './session';
 import logger from 'redux-logger'
 import questionsReducer from './question';
 import answersReducer from './answer';
+import votesReducer from './vote';
 
 const rootReducer = combineReducers({
     sessionsReducer,
     questionsReducer,
-    answersReducer
+    answersReducer,
+    votesReducer
 });
 
 // let enhancer;

@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { SET_QUESTION } from "./question";
 
 const ADD_VOTE = 'vote/SET_VOTE';
 const REMOVE_VOTE = 'vote/REMOVE_VOTE';
@@ -22,11 +23,12 @@ const changeVote = (payload) => ({
 })
 
 export const createVote = (vote) => async dispatch => {
-        const {questionId, answerId, userId, value} = vote;
+    debugger
+        const {questionId, answerId, userId, value, questionComment} = vote;
         const response = await csrfFetch(`/api/votes`,
         {
             method: `POST`,
-            body: JSON.stringify({questionId, answerId, userId, value})
+            body: JSON.stringify({questionId, answerId, userId, value, questionComment})
         })
     const data = await response.json();
         dispatch(addVote(data));
@@ -34,11 +36,11 @@ export const createVote = (vote) => async dispatch => {
 }
 
 export const updateVote = (vote) => async dispatch => {
-    const {questionId, answerId, posterId, value} = vote;
+    const {questionId, answerId, posterId, value, questionComment} = vote;
     const response = await csrfFetch(`/api/votes`,
     {
         method: `UPDATE`,
-        body: JSON.stringify({questionId, answerId, posterId, value})
+        body: JSON.stringify({questionId, answerId, posterId, value, questionComment})
     })
 
     const data = await response.json();
@@ -46,27 +48,45 @@ export const updateVote = (vote) => async dispatch => {
     return response;
 }
 
-export const deleteVote = (voteId) => async dispatch => {
+export const deleteVote = (voteId, objId) => async dispatch => {
     const response = await csrfFetch(`/api/votes/${voteId}`,
-    {
-        method: `DELETE`,
-    }
+        {
+            method: `DELETE`,
+        }
     )
     const data = await response.json();
+    dispatch(removeVote(voteId, objId));
+    return response;
 }
 
-// const votesReducer = (oldState = {}, action) => {
-//     let state = oldState;
-//     switch(action.type){
-//         case RECEIVE_VOTES:
-//             return {...state}
-//         case ADD_VOTE: 
-//             return {...state};
-//         case REMOVE_VOTE:
-//             return {...state};
-//         case CHANGE_VOTE:
-//             return {...state};
-//         default:
-//             return state;
-//     }
-// }
+ const votesReducer = (oldState = {}, action) => {
+    let state = oldState;
+    switch(action.type){
+        // case RECEIVE_VOTES:
+        //     action.votes.forEach(question => {
+        //         // debugger
+        //         // console.log(question.question.id);
+        //         state = {...state, [question?.question.id]: question.question}
+        //         // state = {...state, [question.id]: question}
+        //     });
+        //     return state
+        //     return {...state}
+        // case ADD_VOTE: 
+        //     return {...state};
+        // case REMOVE_VOTE:
+        //     return {...state};
+        // case CHANGE_VOTE:
+        //     return {...state};
+        case SET_QUESTION: 
+            return {...action.payload.votes, ...state}
+        case REMOVE_VOTE:
+            delete state[action.voteId];
+            return state;
+        case ADD_VOTE:
+            return {...state, [action.payload.id]: action.payload}
+        default:
+            return state;
+    }
+}
+
+export default votesReducer;

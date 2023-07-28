@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {useDispatch, useSelector } from "react-redux"
 import { createVote, updateVote, deleteVote } from "../../store/vote.js"
 import { useParams } from "react-router-dom";
@@ -9,9 +9,9 @@ const Vote = () => {
     const history = useHistory();
     const { questionId } = useParams();
 
-    const votes = useSelector(state => {return state.questionsReducer[questionId].votes});
+    const votes = useSelector(state => {return state.votesReducer});
     const user = useSelector(state => {return state.sessionsReducer.user});
-    const userVotes = votes?.filter(vote => vote.user_id === user?.id);
+    const userVotes = Object.values(votes)?.filter(vote => vote?.userId === user?.id || vote?.user_id === user?.id);
 
     const [currentVote, setCurrentVote] = useState(userVotes ? userVotes[0]?.value : null);
 
@@ -25,28 +25,32 @@ const Vote = () => {
         if (!user) history.push('/login')
         else {
             e.preventDefault();
-            if (e.target.value === currentVote){
+            let vote = Boolean(e.target.value); 
+            if (vote === currentVote){
                 setCurrentVote(null);
                 console.log(votes[user.id])
                 debugger
                 dispatch(deleteVote(userVotes[0].id, questionId))
                 // dispatch(deleteVote(votes[user.id].id)) needs to be updated
             } else {
-                let vote = e.target.getAttribute("value");
                 setCurrentVote(vote)
-                dispatch(createVote({questionId: questionId, userId: user.id, value: currentVote}))
+                debugger
+                dispatch(createVote({questionId: questionId, userId: user.id, value: vote, questionComment: true}))
             }
         }
     }
 
     return (
         <div>
-            <button className={currentVote ==='true' ? "buttonChecked" : "buttonUnchecked"} name="upvote" value={true} checked={currentVote === 'true'} onClick={handleVoteChange}>
+            <button className={currentVote ? "buttonChecked" : "buttonUnchecked"} name="upvote" value={true} checked={currentVote} onClick={handleVoteChange}>
                 Upvote
             </button>
-            <button className={currentVote === 'false' ?  "buttonChecked" : "buttonUnchecked"}name="downvote" value={false} checked={currentVote === 'false'} onClick={(handleVoteChange)}>
+            <button className={!currentVote ?  "buttonChecked" : "buttonUnchecked"}name="downvote" value={false} checked={!currentVote} onClick={(handleVoteChange)}>
                 Downvote
             </button>
+            <h1>
+                current vote: {String(currentVote)}
+            </h1>
         </div>
     )
 }
