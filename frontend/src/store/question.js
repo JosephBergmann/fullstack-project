@@ -91,6 +91,7 @@ const questionsReducer = (oldState = {}, action) => {
             return {...state}
         case ADD_VOTE:
             // return {...state}
+            debugger
             let updatedScore = action.payload.value ? 1 : -1
             // state = {...state, [action.question_id].score: state.score + updatedScore }
             state[action.payload.question_id].score = state[action.payload.question_id].score + updatedScore;

@@ -25,16 +25,22 @@ const Vote = () => {
         if (!user) history.push('/login')
         else {
             e.preventDefault();
-            let vote = Boolean(e.target.value); 
+            // let vote = Boolean(e.target.value);
+            let vote = e.target.value === 'true' ? true : false 
             if (vote === currentVote){
-                setCurrentVote(null);
-                console.log(votes[user.id])
                 debugger
+                setCurrentVote(null);
                 dispatch(deleteVote(userVotes[0].id, questionId))
                 // dispatch(deleteVote(votes[user.id].id)) needs to be updated
-            } else {
-                setCurrentVote(vote)
+            } else 
+            if ((currentVote !== undefined && currentVote !== null) && vote === !currentVote){
                 debugger
+                setCurrentVote(!currentVote);
+                dispatch(updateVote({questionId: questionId, userId: user.id, value: vote, questionComment: true}))
+            } else
+            {
+                debugger
+                setCurrentVote(vote)
                 dispatch(createVote({questionId: questionId, userId: user.id, value: vote, questionComment: true}))
             }
         }
