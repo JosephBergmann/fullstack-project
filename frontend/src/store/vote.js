@@ -84,6 +84,8 @@ export const deleteVote = (voteId, objId) => async dispatch => {
             return state;
         case ADD_VOTE:
             return {...state, [action.payload.id]: action.payload}
+        case CHANGE_VOTE:
+            return state;
         default:
             return state;
     }
