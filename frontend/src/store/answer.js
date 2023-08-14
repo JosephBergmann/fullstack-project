@@ -19,9 +19,10 @@ export const createAnswer = (answer) => async dispatch => {
     return response;
 }
 const answersReducer = (state = {}, action) => {
+    debugger
     switch(action.type){
         case ADD_ANSWER:
-            return {...state,  [action.answer.id]: action.answer}
+            return {...state, ...action.answer.answer}
         case SET_QUESTION:
             return {...state, ...action.payload.answers}
         default:

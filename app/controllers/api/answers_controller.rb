@@ -14,7 +14,7 @@ class Api::AnswersController < ApplicationController
     def create
         @answer = Answer.new(poster_id: params["poster_id"], question_id: params["question_id"], body: params["body"])
         if @answer.save
-            render json: @answer
+            render :index
         else
             render json: {error: 'you messed up'}
         end
@@ -28,7 +28,8 @@ class Api::AnswersController < ApplicationController
             return 
         end
         @answer.update!(answer_params)
-        render json: @answer
+        # render json: @answer
+        render :index
     end
 
     def destroy
