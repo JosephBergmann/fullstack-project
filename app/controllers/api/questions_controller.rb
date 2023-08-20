@@ -6,6 +6,7 @@ class Api::QuestionsController < ApplicationController
         if !params[:query]
             @questions = Question.all;
         else
+            @questions = Question.where("title LIKE ?", "%#{params[:query]}");
         end
         render :index
     end
