@@ -3,7 +3,10 @@ class Api::QuestionsController < ApplicationController
     before_action :require_logged_in, only: [:create, :update, :destroy] 
     
     def index
-        @questions = Question.all;
+        if !params[:query]
+            @questions = Question.all;
+        else
+        end
         render :index
     end
 
