@@ -13,6 +13,6 @@ class Answer < ApplicationRecord
 
     has_many :votes,
     primary_key: :id,
-    foreign_key: :answer_id,
+    foreign_key: :question_id,
     class_name: :Vote
 end

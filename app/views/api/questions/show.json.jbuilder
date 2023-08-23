@@ -7,7 +7,15 @@ json.answers do
     @question.answers.each do |answer|
         json.set! answer.id do
             json.extract! answer, :body, :question_id, :score, :created_at, :updated_at
-            json.poster answer.poster.username 
+            json.poster answer.poster.username
+            json.votes do
+            # json.answer.votes do
+                answer.votes.each do |vote|
+                    json.set! vote.id do
+                        json.extract! vote, :id, :question_id, :question_answer, :user_id, :value
+                    end
+                end
+            end
         end
     end
 end
