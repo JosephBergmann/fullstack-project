@@ -16,6 +16,7 @@ const AnswersList = () => {
     })
 
     const dispatch = useDispatch();
+    //CONSIDER DELETION
     // useEffect(() => {
     //     const unsubscribe = dispatch(createAnswer());
     //     return () => unsubscribe();
