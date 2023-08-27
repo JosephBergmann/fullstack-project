@@ -62,6 +62,7 @@ export const deleteVote = (voteId, objId) => async dispatch => {
  const votesReducer = (oldState = {}, action) => {
     let state = oldState;
     switch(action.type){
+        //MARK FOR DELETION
         // case RECEIVE_VOTES:
         //     action.votes.forEach(question => {
         //         // debugger
