@@ -29,7 +29,6 @@ const QuestionsIndexPage = () => {
     }
 
     return(
-        // <h1>hi</h1>
         <div>
             <div className="header">
                 <h1>All Questions</h1>

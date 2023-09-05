@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import { logout } from '../../store/session.js';
 import DropdownMenu from './DropdownMenu';
+import SearchBar from './SearchBar';
 
 const Navigation = () => {
     const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const Navigation = () => {
             <DropdownMenu />
             <NavLink exact to="/">Home</NavLink>
             </div>
+            <SearchBar />
             {sessionLinks}
         </div>
     )
