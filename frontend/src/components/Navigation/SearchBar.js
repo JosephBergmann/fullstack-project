@@ -7,6 +7,8 @@ function SearchBar(){
     const history = useHistory();
     const dispatch = useDispatch();
 
+
+    
     const handleSubmit = (e) => {
 
     }
