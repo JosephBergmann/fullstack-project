@@ -27,8 +27,8 @@ const addQuestion = (question) => ({
     question
 })
 
-export const fetchQuestions = () => async dispatch => {
-    const response = await csrfFetch(`/api/questions/`)
+export const fetchQuestions = (query) => async dispatch => {
+    const response = await csrfFetch(`/api/questions/${query}`)
     const data = await response.json();
     dispatch(setQuestions(data));
     return response
@@ -69,13 +69,13 @@ const questionsReducer = (oldState = {}, action) => {
     // let newState = {...oldState};
     switch(action.type){
         case SET_QUESTIONS:
-            debugger
-            action.questions.forEach(question => {
-                // debugger
-                // console.log(question.question.id);
-                state = {...state, [question?.question.id]: question.question}
-                // state = {...state, [question.id]: question}
-            });
+            console.log(action.questions)
+            if (action.questions){
+                action.questions.forEach(question => {
+                    state = {...state, [question?.question.id]: question.question}
+                    // state = {...state, [question.id]: question}
+                });
+            }
             return state
         case SET_QUESTION:
             // state.question = action.question;

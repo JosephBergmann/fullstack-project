@@ -19,7 +19,6 @@ export const createAnswer = (answer) => async dispatch => {
     return response;
 }
 const answersReducer = (state = {}, action) => {
-    debugger
     switch(action.type){
         case ADD_ANSWER:
             return {...state, ...action.answer.answer}
