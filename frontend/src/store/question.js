@@ -28,11 +28,13 @@ const addQuestion = (question) => ({
 })
 
 export const fetchQuestions = (query) => async dispatch => {
-    const response = await csrfFetch(`/api/questions/${query}`)
+    debugger
+    const response = await csrfFetch(`/api/questions/?query=${encodeURIComponent(query)}`)
     const data = await response.json();
     dispatch(setQuestions(data));
     return response
 }
+  
 
 export const fetchQuestion = (questionId) => async dispatch => {
     const response = await csrfFetch(`/api/questions/${questionId}`)
@@ -69,13 +71,16 @@ const questionsReducer = (oldState = {}, action) => {
     // let newState = {...oldState};
     switch(action.type){
         case SET_QUESTIONS:
+            debugger
             console.log(action.questions)
-            if (action.questions){
-                action.questions.forEach(question => {
-                    state = {...state, [question?.question.id]: question.question}
-                    // state = {...state, [question.id]: question}
-                });
-            }
+                if (action.questions){
+                    state = {}
+                    action.questions.forEach(question => {
+                        state = {...state, [question?.question.id]: question.question}
+                        // state = {...state, [question.id]: question}
+                    
+                    });
+                }
             return state
         case SET_QUESTION:
             // state.question = action.question;
@@ -92,7 +97,6 @@ const questionsReducer = (oldState = {}, action) => {
             return {...state}
         case ADD_VOTE:
             // return {...state}
-            debugger
             let updatedScore = action.payload.value ? 1 : -1
             // state = {...state, [action.question_id].score: state.score + updatedScore }
             state[action.payload.question_id].score = state[action.payload.question_id].score + updatedScore;

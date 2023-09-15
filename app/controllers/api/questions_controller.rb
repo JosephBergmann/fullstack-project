@@ -3,10 +3,10 @@ class Api::QuestionsController < ApplicationController
     before_action :require_logged_in, only: [:create, :update, :destroy] 
     
     def index
-        if !params[:query]
+        if params[:query] == "undefined"
             @questions = Question.all;
         else
-            @questions = Question.where("title LIKE ?", "%#{params[:query]}");
+            @questions = Question.where("title LIKE :search", search: "%#{params[:query]}%");
         end
         render :index
     end
