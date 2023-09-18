@@ -24,13 +24,14 @@ class Api::VotesController < ApplicationController
     end
 
     def update
-        @vote = current_user.question_votes.find_by(id: params[:id])
+        @vote = current_user.votes.find_by(id: params[:id])
 
         if !@vote
             render json: {message: 'Unauthorized'}, status: :unauthorized
             return
         end
 
-        @vote.update!(status: params[:status])
+        @vote.update!(value: params[:value])
+        render json:{message: 'Success'}, status: :ok
     end
 end

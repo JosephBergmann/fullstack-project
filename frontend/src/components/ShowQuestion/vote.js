@@ -4,7 +4,9 @@ import { createVote, updateVote, deleteVote } from "../../store/vote.js"
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min.js";
 
-const Vote = () => {
+const Vote = (props) => {
+    const questionComment = !!props.questionId
+    const objId = props.questionId ||= props.answerId
     const dispatch = useDispatch();
     const history = useHistory();
     const { questionId } = useParams();
@@ -15,12 +17,11 @@ const Vote = () => {
 
     const [currentVote, setCurrentVote] = useState(userVotes ? userVotes[0]?.value : null);
 
-    const options = [
-        {id: 1, label: 'Upvote', value: true},
-        {id: 2, label: 'Downvote', value: false}
-    ]
+    // const options = [
+    //     {id: 1, label: 'Upvote', value: true},
+    //     {id: 2, label: 'Downvote', value: false}
+    // ]
 
-    console.log(currentVote)
     const handleVoteChange = (e) => {
         if (!user) history.push('/login')
         else {
@@ -28,20 +29,17 @@ const Vote = () => {
             // let vote = Boolean(e.target.value);
             let vote = e.target.value === 'true' ? true : false 
             if (vote === currentVote){
-                debugger
                 setCurrentVote(null);
-                dispatch(deleteVote(userVotes[0].id, questionId))
+                dispatch(deleteVote(userVotes[0].id, objId))
                 // dispatch(deleteVote(votes[user.id].id)) needs to be updated
             } else 
             if ((currentVote !== undefined && currentVote !== null) && vote === !currentVote){
-                debugger
                 setCurrentVote(!currentVote);
-                dispatch(updateVote({questionId: questionId, userId: user.id, value: vote, questionComment: true}))
+                dispatch(updateVote({id: userVotes[0].id, questionId: objId, userId: user.id, value: vote, questionComment}))
             } else
             {
-                debugger
                 setCurrentVote(vote)
-                dispatch(createVote({questionId: questionId, userId: user.id, value: vote, questionComment: true}))
+                dispatch(createVote({questionId: objId, userId: user.id, value: vote, questionComment}))
             }
         }
     }

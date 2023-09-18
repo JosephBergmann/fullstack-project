@@ -36,11 +36,11 @@ export const createVote = (vote) => async dispatch => {
 }
 
 export const updateVote = (vote) => async dispatch => {
-    const {questionId, answerId, posterId, value, questionComment} = vote;
-    const response = await csrfFetch(`/api/votes`,
+    const {id, questionId, answerId, userId, value, questionComment} = vote;
+    const response = await csrfFetch(`/api/votes/${id}`,
     {
-        method: `UPDATE`,
-        body: JSON.stringify({questionId, answerId, posterId, value, questionComment})
+        method: `PATCH`,
+        body: JSON.stringify({questionId, answerId, userId, value, questionComment})
     })
 
     const data = await response.json();
@@ -78,7 +78,7 @@ export const deleteVote = (voteId, objId) => async dispatch => {
         //     return {...state};
         // case CHANGE_VOTE:
         //     return {...state};
-        case SET_QUESTION: 
+        case SET_QUESTION:
             return {...action.payload.votes, ...state}
         case REMOVE_VOTE:
             delete state[action.voteId];
