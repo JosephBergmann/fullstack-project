@@ -78,6 +78,8 @@ export const deleteVote = (voteId, objId) => async dispatch => {
         // case CHANGE_VOTE:
         //     return {...state};
         case SET_QUESTION:
+            let answerVotes;
+            if (action.answers) action.answers.forEach((answer) => {if (answer.votes)answer.votes.forEach((vote) => answerVotes[vote.id] = vote)}    );
             return {...action.payload.votes, ...state}
         case REMOVE_VOTE:
             delete state[action.voteId];

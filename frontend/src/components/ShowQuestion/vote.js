@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min.js";
 
 const Vote = (props) => {
     const questionComment = !!props.questionId
-    const objId = props.questionId ||= props.answerId
+    const objId = props.questionId ? props.questionId : props.answerId
     const dispatch = useDispatch();
     const history = useHistory();
     const { questionId } = useParams();

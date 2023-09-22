@@ -11,8 +11,13 @@ class Answer < ApplicationRecord
     foreign_key: :question_id,
     class_name: :Question
 
-    has_many :votes,
-    primary_key: :id,
-    foreign_key: :question_id,
-    class_name: :Vote
+    # has_many :votes,
+    # primary_key: :id,
+    # foreign_key: :question_id,
+    # class_name: :Vote
+
+    has_many :votes, :as => :votable,
+    dependent: :destroy
+
+    
 end

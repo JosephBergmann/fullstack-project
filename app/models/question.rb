@@ -12,10 +12,12 @@ class Question < ApplicationRecord
     class_name: :Answer,
     dependent: :destroy
 
-    has_many :votes,
-    primary_key: :id,
-    foreign_key: :question_id,
-    class_name: :Vote,
+    # has_many :votes,
+    # primary_key: :id,
+    # foreign_key: :question_id,
+    # class_name: :Vote,
+    # dependent: :destroy
+    has_many :votes, :as => :votable,
     dependent: :destroy
 
     def score
