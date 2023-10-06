@@ -12,7 +12,7 @@ json.answers do
             # json.answer.votes do
                 answer.votes.each do |vote|
                     json.set! vote.id do
-                        json.extract! vote, :id, :question_id, :question_answer, :user_id, :value, :vote_type
+                        json.extract! vote, :id, :votable_id, :votable_type, :user_id, :value
                     end
                 end
             end
@@ -23,7 +23,7 @@ end
 json.votes do
     @question.votes.each do |vote|
         json.set! vote.id do
-            json.extract! vote, :id, :question_id, :question_answer, :user_id, :value, :vote_type
+            json.extract! vote, :id, :votable_id, :votable_type, :user_id, :value
         end
     end
 end
