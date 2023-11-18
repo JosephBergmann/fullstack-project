@@ -8,6 +8,7 @@ html {
 body {
     background-color: #c6bdbd;
     /* border-radius: 10px; */
+    font-family: sans-serif;
     display: flex;
     justify-content: center;
     width: 100%;
