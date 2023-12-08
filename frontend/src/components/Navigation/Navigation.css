@@ -1,15 +1,17 @@
 .thebar{
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
     height: 40px;
     background-color: rgb(253, 249, 249);
     border: black;
-    width: 100%;
+    width: 100%; */
 }
 
 .left-side {
-    display: flex;
-    justify-content: flex-start
+    /* display: flex;
+    justify-content: flex-start */
+    float: left;
+    margin: 0.5em;
 }
 
 .login-links {
@@ -25,7 +27,7 @@
     font-size: 12px;
     font-weight: bold;
     color: rgb(0, 107, 194);
-    background-color: rgb(182, 216, 253);
+    background-color: rgb(250, 209, 4);
     border-color:rgb(0, 107, 194);
     border-style: solid;
     border-width: 1px;

@@ -4,32 +4,37 @@
     border-radius: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-left: 40px;
     margin-right: 40px;
+    height: 100rem;
 }
 
 .inner-boxes {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     color: white;
     text-align: center;
     font-size: 40px;
-    margin-top: 60px;
+    /* margin-top: 60px; */
     margin-bottom: 5rem;
 }
 
 .two-boxes {
     display: flex;
     flex-direction: row;
-    align-items: space-between;
+    justify-content: center;
+    align-items: flex-start;
     padding: 20px;
     color: black;
 }
 
 .box1{
-    width: 300px;
-    height: 200px;
+    /* width: 300px;
+    height: 200px; */
+    /* width: 10rem;
+    height: 10rem; */
     background-color: rgb(248, 199, 153);
     margin: auto;
     display: flex;
@@ -43,8 +48,10 @@
 }
 
 .box2{
-    width: 300px;
-    height: 200px;
+    /* width: 300px;
+    height: 200px; */
+    /* width: 10rem;
+    height: 10rem; */
     background-color: rgb(147, 221, 248);
     margin: auto;
     display: flex;
